@@ -1,0 +1,8 @@
+driver = mysql
+host = localhost
+database = db_Atelier
+username = root
+password = monPassword
+charset = utf8
+collation = utf8_unicode_ci
+prefix = 

@@ -1,0 +1,15 @@
+{ 
+    "name": "catif/atelier",
+    "description": "",
+    "type": "project",
+    
+    "autoload": {
+        "psr-4": {
+            "atelier\\" : "./src/classes"
+        }
+    },
+    
+    "require": {
+        "illuminate/database": "*"
+    }
+}
