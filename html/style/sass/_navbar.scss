@@ -18,6 +18,18 @@ nav {
         font-size: 20px;
     }
 
+    &:not(.active){
+        .top{
+            display: none;
+        }
+        i[class="bi bi-plus-lg"]{
+            display: none;
+        }
+        .list-items{
+            display: none;
+        }
+    }
+
     &.active{
         position: fixed;
         width: 100vw;
@@ -31,6 +43,7 @@ nav {
             display: none;
         }
         i[class="bi bi-plus-lg"]{
+            color: $color-contrastWhite;
             position: absolute;
             top: 20px;
             right: 20px;
@@ -85,9 +98,11 @@ nav {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 100px;
-
+            gap: 45px;
+            
             h2{
+                color: $color-contrastWhite;
+                padding: 30px;
                 text-align: center;
             }
         }

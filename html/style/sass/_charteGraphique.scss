@@ -6,10 +6,12 @@ $color-accentuation: #16CFE9;
 $color-secondaire: #2B6E94;
 $color-red: #BF4040;
 $color-input: #D9D9D9;
+$color-bg: #FFF;
 
-h1,h2,h3,p, .p-secondary{
+body{
+    background-color: $color-bg;
     font-family: poppins, sans-serif;
-    color: $color-contrastWhite;
+    color: $color-contrastBlack;
 }
 
 h1{
@@ -50,4 +52,13 @@ input{
     font-weight: 400;
     max-width: 190px;
     color: $color-contrastBlack;
+}
+
+section{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
 }

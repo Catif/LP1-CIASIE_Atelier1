@@ -1,9 +1,23 @@
-let navbar = document.querySelector('nav')
-let openNav = document.querySelector('i[class="bi bi-list"]')
+let navbarEl = document.querySelector('nav')
+let openNavEl = document.querySelector('i[class="bi bi-list"]')
+let closeNavEl = document.querySelector('i[class="bi bi-plus-lg"]')
 
 function init(){
-
-    openNav.addEventListener('click', () => {
-        navbar.classList.add('active')
+    openNavEl.addEventListener('click', () => {
+        openNav()
     })
+    closeNavEl.addEventListener('click', () => {
+        closeNav()
+    })
+}
+
+function openNav(){
+    navbarEl.classList.add('active')
+}
+function closeNav(){
+    navbarEl.classList.remove('active')
+}
+
+export default {
+    init
 }

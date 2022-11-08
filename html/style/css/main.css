@@ -55,9 +55,10 @@ a {
   color: inherit;
 }
 
-h1, h2, h3, p, .p-secondary {
+body {
+  background-color: #FFF;
   font-family: poppins, sans-serif;
-  color: #F4F4F4;
+  color: #0B162C;
 }
 
 h1 {
@@ -100,6 +101,15 @@ input {
   color: #0B162C;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
 nav {
   position: relative;
   height: 70px;
@@ -117,6 +127,15 @@ nav > i {
   color: #F4F4F4;
   font-size: 20px;
 }
+nav:not(.active) .top {
+  display: none;
+}
+nav:not(.active) i[class="bi bi-plus-lg"] {
+  display: none;
+}
+nav:not(.active) .list-items {
+  display: none;
+}
 nav.active {
   position: fixed;
   width: 100vw;
@@ -129,6 +148,7 @@ nav.active > i[class="bi bi-list"] {
   display: none;
 }
 nav.active i[class="bi bi-plus-lg"] {
+  color: #F4F4F4;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -177,9 +197,11 @@ nav.active .list-items {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 45px;
 }
 nav.active .list-items h2 {
+  color: #F4F4F4;
+  padding: 30px;
   text-align: center;
 }
 

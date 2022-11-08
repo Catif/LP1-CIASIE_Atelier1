@@ -1,7 +1,7 @@
 import Nav from './Navbar.js'
 
 function init(){
-    Nav.ini()
+    Nav.init()
 }
 
 window.addEventListener('load', init)
