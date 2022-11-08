@@ -1,0 +1,35 @@
+$color-contrastWhite: #E5E5E5;
+$color-contrastBlack: #0B162C;
+$color-accentuation: #12FFD4;
+$color-secondaire: #364563;
+$color-red: #BF4040;
+$color-input: #D9D9D9;
+
+h1,h2,h3,p, .p-secondary{
+    color: $color-contrastWhite;
+}
+
+h1{
+    font-size: 32px;
+    font-weight: 800;
+}
+
+h2{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h3{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.p-secondary{
+    font-size: 14px;
+    font-weight: 400;
+}

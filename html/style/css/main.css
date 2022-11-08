@@ -49,4 +49,33 @@ input {
   border-radius: 0;
 }
 
+h1, h2, h3, p, .p-secondary {
+  color: #E5E5E5;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.p-secondary {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 /*# sourceMappingURL=main.css.map */

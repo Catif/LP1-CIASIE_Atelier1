@@ -19,10 +19,11 @@ abstract class AppView extends AbstractView implements Renderer{
      */
     protected function makeBody(): string {
         $article = $this->render();
+        $navbar = $this->makeNavbar();
 
         return <<<EOT
             <header>
-                <h1>Hello World !</h1>
+                ${navbar}
             </header>
 
 
@@ -32,6 +33,16 @@ abstract class AppView extends AbstractView implements Renderer{
                 </article>
 
             </section>
+        EOT;
+    }
+
+    protected function makeNavbar(): string {
+        return <<<EOT
+            <nav>
+                <h3>PhotoMedia</h3>
+
+                <i>=</i>
+            </nav>
         EOT;
     }
 }
