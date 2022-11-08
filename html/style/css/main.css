@@ -1,3 +1,4 @@
+@import url("https://use.typekit.net/rlk3vzd.css");
 body {
   background-color: #151515;
   color: #f4f4f4;
@@ -49,8 +50,14 @@ input {
   border-radius: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 h1, h2, h3, p, .p-secondary {
-  color: #E5E5E5;
+  font-family: poppins, sans-serif;
+  color: #F4F4F4;
 }
 
 h1 {
@@ -76,6 +83,104 @@ p {
 .p-secondary {
   font-size: 14px;
   font-weight: 400;
+}
+
+input, select, button {
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+}
+
+input {
+  background-color: #D9D9D9;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 190px;
+  color: #0B162C;
+}
+
+nav {
+  position: relative;
+  height: 70px;
+  width: 100%;
+  background-color: #0B162C;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+}
+nav h3 {
+  color: #16CFE9;
+}
+nav > i {
+  color: #F4F4F4;
+  font-size: 20px;
+}
+nav.active {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0B162C;
+  display: flex;
+  flex-direction: column;
+}
+nav.active > i[class="bi bi-list"] {
+  display: none;
+}
+nav.active i[class="bi bi-plus-lg"] {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 35px;
+  transform: rotate(45deg);
+}
+nav.active > h3 {
+  display: none;
+}
+nav.active .top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+nav.active .top form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+nav.active .top form select {
+  background-color: #16CFE9;
+  max-width: 230px;
+  font-size: 14px;
+  text-align: center;
+}
+nav.active .top form .search {
+  max-width: 230px;
+  border: none;
+  border-radius: 5px;
+  color: #F4F4F4;
+  display: flex;
+}
+nav.active .top form .search button {
+  background-color: #16CFE9;
+  border-radius: 0px 4px 4px 0px;
+  width: 40px;
+}
+nav.active .top form .search input {
+  background-color: #F4F4F4;
+  border-radius: 4px 0px 0px 4px;
+}
+nav.active .list-items {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+nav.active .list-items h2 {
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */

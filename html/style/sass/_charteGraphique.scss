@@ -1,11 +1,14 @@
-$color-contrastWhite: #E5E5E5;
+@import url("https://use.typekit.net/rlk3vzd.css");
+
+$color-contrastWhite: #F4F4F4;
 $color-contrastBlack: #0B162C;
-$color-accentuation: #12FFD4;
-$color-secondaire: #364563;
+$color-accentuation: #16CFE9;
+$color-secondaire: #2B6E94;
 $color-red: #BF4040;
 $color-input: #D9D9D9;
 
 h1,h2,h3,p, .p-secondary{
+    font-family: poppins, sans-serif;
     color: $color-contrastWhite;
 }
 
@@ -32,4 +35,19 @@ p{
 .p-secondary{
     font-size: 14px;
     font-weight: 400;
+}
+
+input, select, button{
+    border: none;
+    border-radius: 4px;
+    height: 30px;
+}
+
+input{
+    background-color: $color-input;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 190px;
+    color: $color-contrastBlack;
 }

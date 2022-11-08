@@ -41,7 +41,29 @@ abstract class AppView extends AbstractView implements Renderer{
             <nav>
                 <h3>PhotoMedia</h3>
 
-                <i>=</i>
+                <i class="bi bi-list"></i>
+                
+                <div class="top">
+                    <form action="" method="GET" class="search">
+                        <select name="search" id="search">
+                            <option value="picture" selected>Image</option>
+                            <option value="galery">Galerie</option>
+                        </select>
+                        <div class="search">
+                            <input type="text" name="q" placeholder="Rechercher">
+                            <button type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </form>
+
+                    <i class="bi bi-plus-lg"></i>
+                </div>
+
+                <div class="list-items">
+                    <a href=""><h2>Accueil</h2></a>
+                    <a href=""><h2>A propos</h2></a>
+                    <a href=""><h2>Connexion</h2></a>
+                    <a href=""><h2>Inscription</h2></a>
+                </div>
             </nav>
         EOT;
     }
