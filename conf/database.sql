@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 07 nov. 2022 à 16:45
--- Version du serveur :  10.5.17-MariaDB
+-- Généré le : mar. 08 nov. 2022 à 15:26
+-- Version du serveur :  10.5.18-MariaDB
 -- Version de PHP : 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -33,7 +33,7 @@ CREATE TABLE `Comment` (
   `id_picture` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `content` varchar(55) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,18 @@ CREATE TABLE `Galery` (
   `private` tinyint(4) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Galery_Tag`
+--
+
+CREATE TABLE `Galery_Tag` (
+  `id_tag` int(11) NOT NULL,
+  `id_galery` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -61,7 +72,7 @@ CREATE TABLE `Organization` (
   `name` varchar(55) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -76,7 +87,29 @@ CREATE TABLE `Picture` (
   `name_file` varchar(55) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Picture_Tag`
+--
+
+CREATE TABLE `Picture_Tag` (
+  `id_tag` int(11) NOT NULL,
+  `id_picture` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Tag`
+--
+
+CREATE TABLE `Tag` (
+  `id` int(10) NOT NULL,
+  `tag` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,7 +122,7 @@ CREATE TABLE `User` (
   `username` varchar(55) DEFAULT NULL,
   `password` varchar(55) DEFAULT NULL,
   `email` varchar(55) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -101,7 +134,7 @@ CREATE TABLE `User_Galery` (
   `id_user` int(11) DEFAULT NULL,
   `id_galery` int(11) DEFAULT NULL,
   `role` varchar(55) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -113,7 +146,7 @@ CREATE TABLE `User_Organization` (
   `id_user` int(11) DEFAULT NULL,
   `id_organization` int(11) DEFAULT NULL,
   `role` varchar(55) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Index pour les tables déchargées
@@ -134,6 +167,13 @@ ALTER TABLE `Galery`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `Galery_Tag`
+--
+ALTER TABLE `Galery_Tag`
+  ADD KEY `id_tag` (`id_tag`),
+  ADD KEY `id_galery` (`id_galery`);
+
+--
 -- Index pour la table `Organization`
 --
 ALTER TABLE `Organization`
@@ -145,6 +185,19 @@ ALTER TABLE `Organization`
 ALTER TABLE `Picture`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_galery` (`id_galery`);
+
+--
+-- Index pour la table `Picture_Tag`
+--
+ALTER TABLE `Picture_Tag`
+  ADD KEY `id_tag` (`id_tag`),
+  ADD KEY `id_picture` (`id_picture`);
+
+--
+-- Index pour la table `Tag`
+--
+ALTER TABLE `Tag`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `User`
@@ -178,10 +231,24 @@ ALTER TABLE `Comment`
   ADD CONSTRAINT `Comment_ibfk_2` FOREIGN KEY (`id_picture`) REFERENCES `Picture` (`id`);
 
 --
+-- Contraintes pour la table `Galery_Tag`
+--
+ALTER TABLE `Galery_Tag`
+  ADD CONSTRAINT `Galery_Tag_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `Galery` (`id`),
+  ADD CONSTRAINT `Galery_Tag_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `Tag` (`id`);
+
+--
 -- Contraintes pour la table `Picture`
 --
 ALTER TABLE `Picture`
   ADD CONSTRAINT `Picture_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `Galery` (`id`);
+
+--
+-- Contraintes pour la table `Picture_Tag`
+--
+ALTER TABLE `Picture_Tag`
+  ADD CONSTRAINT `Picture_Tag_ibfk_1` FOREIGN KEY (`id_picture`) REFERENCES `Picture` (`id`),
+  ADD CONSTRAINT `Picture_Tag_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `Tag` (`id`);
 
 --
 -- Contraintes pour la table `User_Galery`
