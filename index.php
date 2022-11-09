@@ -26,4 +26,3 @@ $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 $router->setDefaultRoute('home');
 
 $router->run();
-
