@@ -40,8 +40,6 @@ abstract class AppView extends AbstractView implements Renderer{
         return <<<EOT
             <nav>
                 <h3>PhotoMedia</h3>
-
-                <i class="bi bi-list"></i>
                 
                 <div class="top">
                     <form action="" method="GET" class="search">
@@ -58,12 +56,30 @@ abstract class AppView extends AbstractView implements Renderer{
                     <i class="bi bi-plus-lg"></i>
                 </div>
 
+                <i class="bi bi-list"></i>
+                
+
                 <div class="list-items">
                     <a href=""><h2>Accueil</h2></a>
+                    <!-- <a href=""><h2>Profil</h2></a> -->
                     <a href=""><h2>A propos</h2></a>
-                    <a href=""><h2>Connexion</h2></a>
-                    <a href=""><h2>Inscription</h2></a>
+                    <!-- <a href=""><h2 id="login">Connexion</h2></a> -->
+                    <!-- <a href=""><h2 id="register">Inscription</h2></a> -->
+                    <!-- <a href=""><h2>Déconnexion</h2></a> -->
+                    <a href="" class="mediaquery"><h2>Profil</h2></a>
+                    <div id="dropdownNav">
+                        <a href=""><img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"></a>
+
+                        <div class="dropdown-content">
+                            <div class="items">
+                                <a href="">Profil</a>
+                                <a href="">Paramètres</a>
+                                <a href="">Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </nav>
         EOT;
     }
