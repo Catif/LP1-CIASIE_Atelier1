@@ -388,18 +388,17 @@ nav.active .list-items h2 {
   cursor: pointer;
 }
 
-#gallery-list {
-  display: flex;
+#galery-list {
   overflow-x: scroll;
-  max-width: 2000px;
-  height: 500px;
-  flex-shrink: 0;
-  gap: 0px 20px;
+  border: 3px solid green;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
 }
-#gallery-list img {
-  width: 150px;
+#galery-list div {
+  min-width: 150px;
   height: 150px;
-  background-color: red;
+  background-color: blue;
 }
 
 /*# sourceMappingURL=main.css.map */

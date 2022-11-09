@@ -3,6 +3,7 @@
 namespace atelier\router;
 
 use atelier\auth\AbstractAuthentification;
+use Exception;
 
 class Router extends AbstractRouter {
 
@@ -16,20 +17,17 @@ class Router extends AbstractRouter {
     }
     
     public function run() : void{
-        if(isset($this->request->get['action'])){
+        $route = 'default';
+        try{
             $route = self::$routes[$this->request->get['action']];
-            if ($route){
-                if (AbstractAuthentification::checkAccessRight($route[1])){
-                    $ctrl = new $route[0]();
-                    $ctrl->execute();
-                } else {
-                    header("Location: " . $this->urlFor('home'));
-                }
-            } else {
-                self::executeRoute('default');
-            }
+        } catch (Exception $e){
+            $route = self::$routes[self::$aliases['default']];
+        }
+        if (AbstractAuthentification::checkAccessRight($route[1])){
+            $ctrl = new $route[0]();
+            $ctrl->execute();
         } else {
-            self::executeRoute('default');
+            header("Location: " . $this->urlFor('home'));
         }
     }
 
@@ -51,11 +49,12 @@ class Router extends AbstractRouter {
     }
 
     public function getAction(){
-        $action = $this->aliases[$this->request->get['action']];
-        if(isset($action)){
-            return $action;
-        } else{
-            return $this->aliases['default'];
+        $action = '';
+        try{
+            $action = self::$aliases[$this->request->get['action']];
+        } catch (Exception $e){
+            $action = self::$aliases['default'];
         }
+        return $action;
     }
 }
