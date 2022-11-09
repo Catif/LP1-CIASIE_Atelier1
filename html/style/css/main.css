@@ -203,4 +203,22 @@ nav.active .list-items h2 {
   text-align: center;
 }
 
+#image-title {
+  text-align: center;
+}
+
+#gallery-list {
+  display: flex;
+  overflow-x: scroll;
+  max-width: 2000px;
+  height: 500px;
+  flex-shrink: 0;
+  gap: 0px 20px;
+}
+#gallery-list img {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+}
+
 /*# sourceMappingURL=main.css.map */

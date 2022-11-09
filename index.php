@@ -19,9 +19,10 @@ $router = new atelier\router\Router();
 /* Ajout des routes de l'application */
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
+$router->addRoute('profile', 'picture', 'atelier\control\PictureController');
 
 
 /* Route par défaut */
-$router->setDefaultRoute('accueil');
+$router->setDefaultRoute('home');
 
 $router->run();

@@ -1,0 +1,15 @@
+
+#gallery-list{
+    display: flex;
+    overflow-x: scroll;
+    max-width: 2000px;
+    height: 500px;
+    flex-shrink: 0;
+    gap: 0px 20px;
+
+    img{
+        width: 150px;
+        height: 150px;
+        background-color: red;
+    }
+}
