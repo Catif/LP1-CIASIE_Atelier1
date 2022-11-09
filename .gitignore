@@ -3,4 +3,5 @@ vendor/
 
 conf/db.ini
 
-*.css
+main.css
+main.css.map

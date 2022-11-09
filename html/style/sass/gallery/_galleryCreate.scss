@@ -1,0 +1,45 @@
+#CreateGalery{
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+
+        .form-group{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            input{
+                width: 100%;
+                max-width: 100%;
+
+                &[type='file']{
+                    display: none;
+                }
+            }
+            label[for='images']{
+                width: 100%;
+                max-width: 100%;
+                height: 35px;
+                background: $color-input;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                font-size: 25px;
+
+                &:hover{
+                    background-color: $color-contrastBlack;
+                    color: $color-contrastWhite;
+                }
+            }
+        }
+    }
+}
