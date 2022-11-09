@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `Comment`
 --
 
-CREATE TABLE `Comment` (
+CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `id_picture` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE `Comment` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Galery`
+-- Structure de la table `galery`
 --
 
-CREATE TABLE `Galery` (
+CREATE TABLE `galery` (
   `id` int(11) NOT NULL,
   `title` varchar(55) DEFAULT NULL,
   `tags` varchar(55) DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `Galery` (
 -- Structure de la table `Galery_Tag`
 --
 
-CREATE TABLE `Galery_Tag` (
+CREATE TABLE `galery_tag` (
   `id_tag` int(11) NOT NULL,
   `id_galery` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -64,10 +64,10 @@ CREATE TABLE `Galery_Tag` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Organization`
+-- Structure de la table `organization`
 --
 
-CREATE TABLE `Organization` (
+CREATE TABLE `organization` (
   `id` int(11) NOT NULL,
   `name` varchar(55) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -77,10 +77,10 @@ CREATE TABLE `Organization` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Picture`
+-- Structure de la table `picture`
 --
 
-CREATE TABLE `Picture` (
+CREATE TABLE `picture` (
   `id` int(11) NOT NULL,
   `id_galery` int(11) DEFAULT NULL,
   `title` varchar(55) DEFAULT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE `Picture` (
 -- Structure de la table `Picture_Tag`
 --
 
-CREATE TABLE `Picture_Tag` (
+CREATE TABLE `picture_tag` (
   `id_tag` int(11) NOT NULL,
   `id_picture` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -103,10 +103,10 @@ CREATE TABLE `Picture_Tag` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Tag`
+-- Structure de la table `tag`
 --
 
-CREATE TABLE `Tag` (
+CREATE TABLE `tag` (
   `id` int(10) NOT NULL,
   `tag` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -114,10 +114,10 @@ CREATE TABLE `Tag` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `User`
+-- Structure de la table `user`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(55) DEFAULT NULL,
   `password` varchar(55) DEFAULT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE `User` (
 -- Structure de la table `User_Galery`
 --
 
-CREATE TABLE `User_Galery` (
+CREATE TABLE `user_galery` (
   `id_user` int(11) DEFAULT NULL,
   `id_galery` int(11) DEFAULT NULL,
   `role` varchar(55) DEFAULT NULL
@@ -142,11 +142,12 @@ CREATE TABLE `User_Galery` (
 -- Structure de la table `User_Organization`
 --
 
-CREATE TABLE `User_Organization` (
+CREATE TABLE `user_organization` (
   `id_user` int(11) DEFAULT NULL,
   `id_organization` int(11) DEFAULT NULL,
   `role` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 
 --
 -- Index pour les tables déchargées
@@ -155,69 +156,116 @@ CREATE TABLE `User_Organization` (
 --
 -- Index pour la table `Comment`
 --
-ALTER TABLE `Comment`
+ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_picture` (`id_picture`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Index pour la table `Galery`
+-- Index pour la table `galery`
 --
-ALTER TABLE `Galery`
+ALTER TABLE `galery`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `Galery_Tag`
 --
-ALTER TABLE `Galery_Tag`
+ALTER TABLE `galery_tag`
   ADD KEY `id_tag` (`id_tag`),
   ADD KEY `id_galery` (`id_galery`);
 
 --
--- Index pour la table `Organization`
+-- Index pour la table `organization`
 --
-ALTER TABLE `Organization`
+ALTER TABLE `organization`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `Picture`
+-- Index pour la table `picture`
 --
-ALTER TABLE `Picture`
+ALTER TABLE `picture`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_galery` (`id_galery`);
 
 --
 -- Index pour la table `Picture_Tag`
 --
-ALTER TABLE `Picture_Tag`
+ALTER TABLE `picture_tag`
   ADD KEY `id_tag` (`id_tag`),
   ADD KEY `id_picture` (`id_picture`);
 
 --
--- Index pour la table `Tag`
+-- Index pour la table `tag`
 --
-ALTER TABLE `Tag`
+ALTER TABLE `tag`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `User`
+-- Index pour la table `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `User_Galery`
 --
-ALTER TABLE `User_Galery`
+ALTER TABLE `user_galery`
   ADD KEY `id_user` (`id_user`),
   ADD KEY `id_galery` (`id_galery`);
 
 --
 -- Index pour la table `User_Organization`
 --
-ALTER TABLE `User_Organization`
+ALTER TABLE `user_organization`
   ADD KEY `fk_id_user` (`id_user`),
   ADD KEY `fk_id_orga` (`id_organization`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+--
+-- AUTO_INCREMENT pour la table `galery`
+--
+ALTER TABLE `galery`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+--
+-- AUTO_INCREMENT pour la table `organization`
+--
+ALTER TABLE `organization`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+--
+-- AUTO_INCREMENT pour la table `picture`
+--
+ALTER TABLE `picture`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+--
+-- AUTO_INCREMENT pour la table `tag`
+--
+ALTER TABLE `tag`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 
 --
 -- Contraintes pour les tables déchargées
@@ -226,43 +274,43 @@ ALTER TABLE `User_Organization`
 --
 -- Contraintes pour la table `Comment`
 --
-ALTER TABLE `Comment`
-  ADD CONSTRAINT `Comment_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `User` (`id`),
-  ADD CONSTRAINT `Comment_ibfk_2` FOREIGN KEY (`id_picture`) REFERENCES `Picture` (`id`);
+ALTER TABLE `comment`
+  ADD CONSTRAINT `Comment_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `Comment_ibfk_2` FOREIGN KEY (`id_picture`) REFERENCES `picture` (`id`);
 
 --
 -- Contraintes pour la table `Galery_Tag`
 --
-ALTER TABLE `Galery_Tag`
-  ADD CONSTRAINT `Galery_Tag_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `Galery` (`id`),
-  ADD CONSTRAINT `Galery_Tag_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `Tag` (`id`);
+ALTER TABLE `galery_tag`
+  ADD CONSTRAINT `Galery_Tag_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `galery` (`id`),
+  ADD CONSTRAINT `Galery_Tag_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`);
 
 --
--- Contraintes pour la table `Picture`
+-- Contraintes pour la table `picture`
 --
-ALTER TABLE `Picture`
-  ADD CONSTRAINT `Picture_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `Galery` (`id`);
+ALTER TABLE `picture`
+  ADD CONSTRAINT `Picture_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `galery` (`id`);
 
 --
 -- Contraintes pour la table `Picture_Tag`
 --
-ALTER TABLE `Picture_Tag`
-  ADD CONSTRAINT `Picture_Tag_ibfk_1` FOREIGN KEY (`id_picture`) REFERENCES `Picture` (`id`),
-  ADD CONSTRAINT `Picture_Tag_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `Tag` (`id`);
+ALTER TABLE `picture_tag`
+  ADD CONSTRAINT `Picture_Tag_ibfk_1` FOREIGN KEY (`id_picture`) REFERENCES `picture` (`id`),
+  ADD CONSTRAINT `Picture_Tag_ibfk_2` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`);
 
 --
 -- Contraintes pour la table `User_Galery`
 --
-ALTER TABLE `User_Galery`
-  ADD CONSTRAINT `User_Galery_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `Galery` (`id`),
-  ADD CONSTRAINT `User_Galery_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `User` (`id`);
+ALTER TABLE `user_galery`
+  ADD CONSTRAINT `User_Galery_ibfk_1` FOREIGN KEY (`id_galery`) REFERENCES `galery` (`id`),
+  ADD CONSTRAINT `User_Galery_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `User_Organization`
 --
-ALTER TABLE `User_Organization`
-  ADD CONSTRAINT `fk_id_orga` FOREIGN KEY (`id_organization`) REFERENCES `Organization` (`id`),
-  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `User` (`id`);
+ALTER TABLE `user_organization`
+  ADD CONSTRAINT `fk_id_orga` FOREIGN KEY (`id_organization`) REFERENCES `organization` (`id`),
+  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
