@@ -26,6 +26,6 @@ $router->addRoute('register', 'inscription', 'atelier\control\RegisterController
 
 
 /* Route par défaut */
-$router->setDefaultRoute('accueil');
+$router->setDefaultRoute('home');
 
 $router->run();

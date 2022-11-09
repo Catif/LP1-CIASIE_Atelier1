@@ -1,0 +1,24 @@
+.formCo>*{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0 20px 0;
+}
+
+.formCo h2 {
+    margin-top: 4em;
+    text-align: center;
+}
+
+#connexion, #inscription {
+    width: 100%;
+    background-color: $color-contrastBlack;
+    color: $color-contrastWhite;
+}
+
+.formCo a {
+    @extend button;
+    text-align: center;
+    background-color: $color-input;
+    padding: auto;
+}
