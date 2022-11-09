@@ -22,6 +22,7 @@ $router = new atelier\router\Router();
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('creerGroup', 'CreerGroup', 'atelier\control\CreerGroupController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
+$router->addRoute('creerGroup', 'CreerGroup', 'atelier\control\CreerGroupController');
 
 
 
