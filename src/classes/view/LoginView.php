@@ -7,7 +7,7 @@ class LoginView extends AppView {
     public function render():string{
         $html = <<<EOF
         <div class="connexion">
-            <form action="" method="post">
+            <form class="formCo" action="" method="post">
                 <h2 id="cou">Connexion</h2>
 
                 <label>Email</label>
