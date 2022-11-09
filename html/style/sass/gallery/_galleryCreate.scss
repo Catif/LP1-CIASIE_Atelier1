@@ -11,19 +11,12 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 5px;
 
-            input{
-                width: 100%;
-                max-width: 100%;
-
-                &[type='file']{
-                    display: none;
-                }
+            input[type='file']{
+                display: none;
             }
-            label[for='images']{
-                width: 100%;
-                max-width: 100%;
+            label[for='imagesUpload']{
                 height: 35px;
                 background: $color-input;
                 display: flex;
@@ -31,7 +24,7 @@
                 align-items: center;
                 border-radius: 4px;
                 cursor: pointer;
-                transition: all 0.3s ease-in-out;
+                transition: all 0.2s ease-in-out;
 
                 font-size: 25px;
 
@@ -39,6 +32,64 @@
                     background-color: $color-contrastBlack;
                     color: $color-contrastWhite;
                 }
+            }
+
+            .images-list{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 10px;
+
+                .image-file{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 15px;
+                    width: 100%;
+                    height: 30px;
+                    background: $color-input;
+                    border-radius: 4px;
+                    max-width: 100%;
+                    p{
+                        font-size: 14px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    i{
+                        font-size: 18px;
+                        cursor: pointer;
+
+                        &:nth-child(1){
+                            color: $color-contrastBlack;
+                        }
+                        &:nth-child(2){
+                            color: $color-red;
+                        }
+                    }
+                }
+            }
+
+
+            textarea{
+                height: 90px;
+                background: $color-input;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+        }
+        .list-button{
+            width: 100%;
+            button{
+                @include buttonPrimary(100%);
+                margin-bottom: 10px;
+            }
+
+            a{
+                @include buttonInput(100%);
             }
         }
     }

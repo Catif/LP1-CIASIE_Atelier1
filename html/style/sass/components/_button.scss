@@ -36,3 +36,9 @@
     background-color: $color-red;
     color: $color-contrastWhite;
 }
+
+@mixin buttonInput($width){
+    @include button($width);
+    background-color: $color-input;
+    color: $color-contrastBlack;
+}

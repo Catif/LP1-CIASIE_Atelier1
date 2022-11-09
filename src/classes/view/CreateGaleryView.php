@@ -5,6 +5,7 @@ namespace atelier\view;
 class CreateGaleryView extends AppView {
     public function render() : string{
         $urlActionForm = $this->router->urlFor('create-galery');
+        $urlRetour = '';
 
         $html = <<<BLADE
         <article id="CreateGalery">
@@ -22,23 +23,27 @@ class CreateGaleryView extends AppView {
                 <div class="form-group">
                     <label>Ajouter des images</label>
 
-                    <label for="images"><i class="bi bi-upload"></i></label>
-                    <input type="file" id="images" name="images" required>
+                    <label for="imagesUpload"><i class="bi bi-upload"></i></label>
+                    <input type="file" id="imagesUpload" name="images" multiple="multiple" accept="image/*" required>
                 </div>
 
                 <div class="form-group">
                     <label for="images-list">Fichiers téléversés</label>
                     <div class="images-list">
-                        <div class="image-file">
-                            <p>image1.jpg</p>
-
-                            <div class="image-actions">
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="title">Description</label>
+                    <textarea type="text" id="title" name="title" placeholder="Blablabla" required></textarea>
+                </div>
+
+                <div class="list-button">
+                    <button type="submit">Créer ma galerie</button>
+                    <a href="${urlRetour}">Annuler</a>
+                </div>
             </form>
+            <script src="/html/js/Create-Edit_Galery.js"></script>
         </article>
         
         BLADE;
