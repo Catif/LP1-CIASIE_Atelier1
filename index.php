@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 
 /* Connexion à la BDD  */
 $db = new Illuminate\Database\Capsule\Manager();
-$db->addConnection(parse_ini_file('conf/db.ini'));   /* configuration avec nos paramètres */
+$db->addConnection(parse_ini_file('conf/config.ini'));   /* configuration avec nos paramètres */
 $db->setAsGlobal();            /* rendre la connexion visible dans tout le projet */
 $db->bootEloquent();           /* établir la connexion */
 
@@ -20,6 +20,7 @@ $router = new atelier\router\Router();
 
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
+
 
 
 /* Route par défaut */
