@@ -1,3 +1,46 @@
-#image-title{
-    text-align: center;
+#pictureView-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 75px 0px;
+}
+
+#picture-header{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px 50px;
+
+    #picture{
+        position: relative;
+        width: 100%;
+        max-width: 1100px;
+        border-radius: 4px;
+    }
+
+    #picture-infos{
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px 0px;
+
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 10px 0px;
+        }
+    }
+}
+
+#comments{
+    #comments-header{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px 25px;
+    }
+
+    a{
+        @include buttonPrimary(270px);
+        cursor: pointer;
+    }
 }

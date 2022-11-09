@@ -48,5 +48,14 @@ class Router extends AbstractRouter {
             }
         }
         return $url;
-    }  
+    }
+
+    public function getAction(){
+        $action = $this->aliases[$this->request->get['action']];
+        if(isset($action)){
+            return $action;
+        } else{
+            return $this->aliases['default'];
+        }
+    }
 }
