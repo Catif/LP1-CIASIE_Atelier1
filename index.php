@@ -21,6 +21,8 @@ $router->addRoute('login', 'connexion', 'atelier\control\LoginController');
 $router->addRoute('register', 'inscription', 'atelier\control\RegisterController');
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
+$router->addRoute('login', 'connexion', 'atelier\control\LoginController');
+$router->addRoute('register', 'inscription', 'atelier\control\RegisterController');
 
 
 /* Route par défaut */
