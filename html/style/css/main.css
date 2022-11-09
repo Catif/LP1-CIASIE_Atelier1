@@ -234,7 +234,6 @@ nav #dropdownNav {
     background-color: #F4F4F4;
     min-width: 160px;
     border-radius: 4px;
-    z-index: 1;
   }
   nav #dropdownNav .dropdown-content .items {
     z-index: 2;
@@ -256,19 +255,20 @@ nav #dropdownNav {
   nav #dropdownNav .dropdown-content::before {
     content: "";
     position: absolute;
-    top: -5px;
+    top: -10px;
     left: 50%;
-    transform: translateX(-50%) rotate(45deg);
+    transform: translateX(-50%);
     display: block;
     width: 15px;
     height: 0px;
     background-color: #F4F4F4;
-    z-index: 0;
-    transition: height 0.1s ease-in-out 0.2s;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    z-index: -1;
+    transition: height 0.1s ease-in-out 0.4s;
   }
   nav #dropdownNav:hover .dropdown-content::before, nav #dropdownNav .items:hover::before {
     height: 15px;
-    transition: height 0.1s ease-in-out 0s;
+    transition: height 0s ease-in-out 0s;
   }
   nav #dropdownNav:hover .dropdown-content .items, nav #dropdownNav:hover .dropdown-content .items:hover, nav #dropdownNav .items:hover .items, nav #dropdownNav .items:hover .items:hover {
     height: 120px;
