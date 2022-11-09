@@ -2,3 +2,5 @@ vendor/
 .sass-cache/
 
 conf/db.ini
+
+*.css
