@@ -20,6 +20,7 @@ $router = new atelier\router\Router();
 $router->addRoute('home', 'accueil', 'atelier\control\HomeController');
 $router->addRoute('login', 'connexion', 'atelier\control\LoginController');
 $router->addRoute('register', 'inscription', 'atelier\control\RegisterController');
+$router->addRoute('profile', 'profil', 'atelier\control\ProfileController');
 
 
 /* Route par défaut */

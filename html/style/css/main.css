@@ -1,174 +1,67 @@
-@import url("https://use.typekit.net/rlk3vzd.css");
-body {
-  background-color: #151515;
-  color: #f4f4f4; }
+/*
+Error: File to import not found or unreadable: importAbout.
+       Load path: /home/tahri12u/Documents/github/LP1-CIASIE_Atelier1/html/style/sass
+        on line 9 of html/style/sass/main.scss
 
-*, *:before, *:after {
-  box-sizing: border-box; }
+4: }
+5: 
+6: @import 'reset';
+7: @import 'charteGraphique';
+8: 
+9: @import 'importAbout';
+10: @import 'importAuthentication';
+11: @import 'importComponents';
+12: @import 'importGallery';
+13: @import 'importGroup';
+14: @import 'importHome';
 
-html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  text-size-adjust: none; }
-
-footer, header, nav, section, main {
-  display: block; }
-
-body {
-  line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-blockquote:before, blockquote:after, q:before, q:after {
-  content: '';
-  content: none; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-input {
-  border-radius: 0; }
-
-a {
-  text-decoration: none;
-  color: inherit; }
-
-body {
-  background-color: #FFF;
-  font-family: poppins, sans-serif;
-  color: #0B162C; }
-
-h1 {
-  font-size: 32px;
-  font-weight: 800; }
-
-h2 {
-  font-size: 24px;
-  font-weight: 700; }
-
-h3 {
-  font-size: 18px;
-  font-weight: 500; }
-
-p {
-  font-size: 16px;
-  font-weight: 400; }
-
-.p-secondary {
-  font-size: 14px;
-  font-weight: 400; }
-
-input, select, button {
-  border: none;
-  border-radius: 4px;
-  height: 30px; }
-
-input {
-  background-color: #D9D9D9;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: 400;
-  max-width: 190px;
-  color: #0B162C; }
-
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px; }
-
-nav {
-  position: relative;
-  height: 70px;
-  width: 100%;
-  background-color: #0B162C;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 25px; }
-  nav h3 {
-    color: #16CFE9; }
-  nav > i {
-    color: #F4F4F4;
-    font-size: 20px; }
-  nav:not(.active) .top {
-    display: none; }
-  nav:not(.active) i[class="bi bi-plus-lg"] {
-    display: none; }
-  nav:not(.active) .list-items {
-    display: none; }
-  nav.active {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: #0B162C;
-    display: flex;
-    flex-direction: column; }
-    nav.active > i[class="bi bi-list"] {
-      display: none; }
-    nav.active i[class="bi bi-plus-lg"] {
-      color: #F4F4F4;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 35px;
-      transform: rotate(45deg); }
-    nav.active > h3 {
-      display: none; }
-    nav.active .top {
-      display: flex;
-      justify-content: space-between;
-      width: 100%; }
-      nav.active .top form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px; }
-        nav.active .top form select {
-          background-color: #16CFE9;
-          max-width: 230px;
-          font-size: 14px;
-          text-align: center; }
-        nav.active .top form .search {
-          max-width: 230px;
-          border: none;
-          border-radius: 5px;
-          color: #F4F4F4;
-          display: flex; }
-          nav.active .top form .search button {
-            background-color: #16CFE9;
-            border-radius: 0px 4px 4px 0px;
-            width: 40px; }
-          nav.active .top form .search input {
-            background-color: #F4F4F4;
-            border-radius: 4px 0px 0px 4px; }
-    nav.active .list-items {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 45px; }
-      nav.active .list-items h2 {
-        color: #F4F4F4;
-        padding: 30px;
-        text-align: center; }
-
-.connexion {
-  border: 1px solid red;
-  display: flex; }
-
-/*# sourceMappingURL=main.css.map */
+Backtrace:
+html/style/sass/main.scss:9
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/import_node.rb:44:in `import'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/import_node.rb:28:in `imported_file'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/import_node.rb:37:in `css_import?'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:310:in `visit_import'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:468:in `update_stylesheet'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:449:in `on_file_changed'
+/usr/share/rubygems-integration/all/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:320:in `block in watch'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/config.rb:28:in `call'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/processor.rb:117:in `block in _process_changes'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/thread.rb:26:in `rescue_and_log'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/processor.rb:116:in `_process_changes'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/processor.rb:25:in `block in loop_for'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/processor.rb:20:in `loop'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/processor.rb:20:in `loop_for'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/loop.rb:85:in `_process_changes'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/event/loop.rb:51:in `block in start'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/thread.rb:26:in `rescue_and_log'
+/usr/share/rubygems-integration/all/gems/listen-3.7.0/lib/listen/thread.rb:18:in `block in new'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: importAbout.\A        Load path: /home/tahri12u/Documents/github/LP1-CIASIE_Atelier1/html/style/sass\A         on line 9 of html/style/sass/main.scss\A \A 4: }\A 5: \A 6: @import 'reset';\A 7: @import 'charteGraphique';\A 8: \A 9: @import 'importAbout';\A 10: @import 'importAuthentication';\A 11: @import 'importComponents';\A 12: @import 'importGallery';\A 13: @import 'importGroup';\A 14: @import 'importHome';"; }
