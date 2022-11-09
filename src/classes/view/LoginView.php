@@ -17,7 +17,7 @@ class LoginView extends AppView {
                 <input type="email" name="email" required>
 
                 <label>Mot de passe</label>
-                <input type="password" name="mdp" required>
+                <input type="password" name="password" required>
 
                 <button id="connexion" type="submit">Connexion</button>
                 <a href="{$register}">Inscritpion</a>
