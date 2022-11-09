@@ -6,13 +6,12 @@ body{
 @import 'reset';
 @import 'charteGraphique';
 
-
-@import 'importAbout';
-@import 'importAuthentication';
-@import 'importComponents';
-@import 'importGallery';
-@import 'importGroup';
-@import 'importHome';
-@import 'importImage';
-@import 'importProfile';
+@import 'about/importAbout';
+@import 'authentication/importAuthentication';
+@import 'components/importComponents';
+@import 'gallery/importGallery';
+@import 'group/importGroup';
+@import 'home/importHome';
+@import 'image/importImage';
+@import 'profile/importProfile';
 
