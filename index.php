@@ -17,7 +17,8 @@ atelier\view\AppView::addStyle('html/style/css/main.css');
 $router = new atelier\router\Router();
 
 /* Ajout des routes de l'application */
-$router->addRoute('home', 'accueil', 'atelier\control\HomeController');
+$router->addRoute('home', 'home', 'atelier\control\HomeController');
+$router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
 
 
 /* Route par défaut */
