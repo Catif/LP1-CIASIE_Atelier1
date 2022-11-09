@@ -22,6 +22,6 @@ $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
 
 
 /* Route par défaut */
-$router->setDefaultRoute('accueil');
+$router->setDefaultRoute('home');
 
 $router->run();

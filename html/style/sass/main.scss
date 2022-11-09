@@ -5,13 +5,12 @@ body{
 
 @import 'reset';
 @import 'charteGraphique';
+@import 'components/importComponents';
 
-@import 'importAbout';
-@import 'importAuthentication';
-@import 'importComponents';
-@import 'importGallery';
-@import 'importGroup';
-@import 'importHome';
-@import 'importImage';
-@import 'importProfile';
-
+@import 'about/importAbout';
+@import 'authentication/importAuthentication';
+@import 'gallery/importGallery';
+@import 'group/importGroup';
+@import 'home/importHome';
+@import 'image/importImage';
+@import 'profile/importProfile';
