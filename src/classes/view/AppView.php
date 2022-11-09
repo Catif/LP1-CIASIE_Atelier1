@@ -21,23 +21,22 @@ abstract class AppView extends AbstractView implements Renderer{
         $article = $this->render();
         $navbar = $this->makeNavbar();
 
-        return <<<EOT
+        return <<<BLADE
             <header>
                 ${navbar}
             </header>
 
-
-            <section class="theme-backcolor2">
-                <article class="theme-backcolor2">
+            <section>
+                <article>
                     ${article}
                 </article>
 
             </section>
-        EOT;
+        BLADE;
     }
 
     protected function makeNavbar(): string {
-        return <<<EOT
+        return <<<BLADE
             <nav>
                 <h3>PhotoMedia</h3>
                 
@@ -57,7 +56,6 @@ abstract class AppView extends AbstractView implements Renderer{
                 </div>
 
                 <i class="bi bi-list"></i>
-                
 
                 <div class="list-items">
                     <a href=""><h2>Accueil</h2></a>
@@ -81,6 +79,6 @@ abstract class AppView extends AbstractView implements Renderer{
                 </div>
 
             </nav>
-        EOT;
+        BLADE;
     }
 }
