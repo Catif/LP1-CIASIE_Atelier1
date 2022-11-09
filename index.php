@@ -25,3 +25,9 @@ $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
 $router->setDefaultRoute('home');
 
 $router->run();
+
+$user = new atelier\modele\User();
+$user->username = 'toto';
+$user->password = 'totoPass';
+$user->email = 'toto@titi.fr';
+$user->save();
