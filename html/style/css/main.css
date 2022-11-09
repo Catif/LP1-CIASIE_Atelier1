@@ -153,127 +153,14 @@ nav > i {
   color: #F4F4F4;
   font-size: 20px;
 }
-nav .top {
+nav:not(.active) .top {
   display: none;
 }
-nav .list-items {
+nav:not(.active) i[class="bi bi-plus-lg"] {
   display: none;
 }
-nav i[class="bi bi-plus-lg"] {
+nav:not(.active) .list-items {
   display: none;
-}
-nav #dropdownNav {
-  display: none;
-}
-@media screen and (min-width: 570px) {
-  nav .top {
-    display: flex;
-  }
-}
-@media screen and (min-width: 1180px) {
-  nav .mediaquery {
-    display: none;
-  }
-  nav .list-items {
-    display: flex;
-    color: #F4F4F4;
-    align-items: center;
-    gap: 30px;
-  }
-  nav .list-items h2 {
-    font-size: 18px;
-    font-weight: 500px;
-  }
-  nav .list-items h2#login {
-    width: 150px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    background-color: #F4F4F4;
-    color: #0B162C;
-  }
-  nav .list-items h2#register {
-    width: 150px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 400;
-    background-color: #16CFE9;
-    color: #0B162C;
-  }
-  nav i[class="bi bi-list"] {
-    display: none;
-  }
-  nav #dropdownNav {
-    position: relative;
-    display: block;
-  }
-  nav #dropdownNav img {
-    border-radius: 100%;
-    height: 50px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-  }
-  nav #dropdownNav .dropdown-content {
-    position: absolute;
-    top: 80px;
-    left: -65px;
-    background-color: #F4F4F4;
-    min-width: 160px;
-    border-radius: 4px;
-  }
-  nav #dropdownNav .dropdown-content .items {
-    z-index: 2;
-    overflow: hidden;
-    height: 0px;
-    transition: height 0.3s ease-in-out 0.2s;
-  }
-  nav #dropdownNav .dropdown-content .items a {
-    color: #0B162C;
-    text-align: center;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.1s ease-in-out;
-  }
-  nav #dropdownNav .dropdown-content .items a:hover {
-    background-color: #16CFE9;
-  }
-  nav #dropdownNav .dropdown-content::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: block;
-    width: 15px;
-    height: 0px;
-    background-color: #F4F4F4;
-    clip-path: polygon(50% 0, 100% 100%, 0 100%);
-    z-index: -1;
-    transition: height 0.1s ease-in-out 0.4s;
-  }
-  nav #dropdownNav:hover .dropdown-content::before, nav #dropdownNav .items:hover::before {
-    height: 15px;
-    transition: height 0s ease-in-out 0s;
-  }
-  nav #dropdownNav:hover .dropdown-content .items, nav #dropdownNav:hover .dropdown-content .items:hover, nav #dropdownNav .items:hover .items, nav #dropdownNav .items:hover .items:hover {
-    height: 120px;
-    transition: height 0.3s ease-in-out 0s;
-  }
 }
 nav.active {
   position: fixed;
@@ -287,7 +174,6 @@ nav.active > i[class="bi bi-list"] {
   display: none;
 }
 nav.active i[class="bi bi-plus-lg"] {
-  display: block;
   color: #F4F4F4;
   position: absolute;
   top: 20px;
@@ -304,23 +190,31 @@ nav.active .top {
   width: 100%;
 }
 nav.active .top form {
+  display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 100%;
-  max-width: calc(100% - 50px);
 }
 nav.active .top form select {
-  width: 100%;
+  background-color: #16CFE9;
+  max-width: 230px;
+  font-size: 14px;
   text-align: center;
-  border-radius: 4px;
 }
 nav.active .top form .search {
+  max-width: 230px;
+  border: none;
+  border-radius: 5px;
   color: #F4F4F4;
+  display: flex;
+}
+nav.active .top form .search button {
+  background-color: #16CFE9;
+  border-radius: 0px 4px 4px 0px;
+  width: 40px;
 }
 nav.active .top form .search input {
+  background-color: #F4F4F4;
   border-radius: 4px 0px 0px 4px;
-  max-width: calc(100% - 40px);
-  width: 100%;
 }
 nav.active .list-items {
   width: 100%;
