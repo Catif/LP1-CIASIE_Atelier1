@@ -17,15 +17,14 @@ class Router extends AbstractRouter {
     }
     
     public function run() : void{
-        $route = 'default';
-        try{
+        if (isset(self::$routes[$this->request->get['action']])){
             $route = self::$routes[$this->request->get['action']];
-        } catch (Exception $e){
-            $route = self::$routes[self::$aliases['default']];
-        }
-        if (AbstractAuthentification::checkAccessRight($route[1])){
-            $ctrl = new $route[0]();
-            $ctrl->execute();
+            if (AbstractAuthentification::checkAccessRight($route[1])){
+                $ctrl = new $route[0]();
+                $ctrl->execute();
+            } else {
+                header("Location: " . $this->urlFor('home'));
+            }
         } else {
             header("Location: " . $this->urlFor('home'));
         }

@@ -1,7 +1,8 @@
-#pictureView-container{
+#picture{
+    z-index: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 75px 0px;
 }
 
@@ -10,10 +11,10 @@
     flex-wrap: wrap;
     gap: 25px 50px;
 
-    #picture{
-        position: relative;
+    #pic{
         width: 100%;
-        max-width: 1100px;
+        max-width: 1180px;
+        height: auto;
         border-radius: 4px;
     }
 
@@ -32,6 +33,10 @@
 }
 
 #comments{
+    display: flex;
+    flex-direction: column;
+    gap: 45px 0px;
+
     #comments-header{
         display: flex;
         align-items: center;
@@ -42,5 +47,39 @@
     a{
         @include buttonPrimary(270px);
         cursor: pointer;
+    }
+
+    #comments-list{
+        display: flex;
+        flex-direction: column;
+        gap: 25px 0px;
+
+
+        .comment{
+            display: flex;
+            background-color: $color-input;
+            color: $color-contrastBlack;
+            padding: 45px;
+            border-radius: 4px;
+            gap: 0px 25px;
+
+            div{
+                display: flex;
+                flex-direction: column;
+
+                .author-pfp{
+                    width: 90px;
+                    height: 90px;
+                    background-color: red;
+                    border-radius: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1180px){
+    #picture{
+        padding: 45px;
     }
 }
