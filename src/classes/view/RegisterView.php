@@ -1,29 +1,42 @@
 <?php
 
 namespace atelier\view;
-
-class ConnexionView extends AppView {
+use atelier\router\Router;
+class RegisterView extends AppView {
 
     public function render():string{
+        $r = new Router();
+        $login = $r->urlFor('login');
         $html = <<<EOF
-        <div class="Inscription">
-            <form action="" method="post">
-                <h2>Inscription</h2>
-
-                <label>Pseudonyme</label>
-                <input type="text" name="pseudo" required>
-
-                <label>Mot de passe</label>
-                <input type="password" name="mdp" required>
-
-                <label>Email</label>
-                <input type="email" name="email" required>
-
-                <label>Vérification mot de passe</label>
-                <input type="password" name="mdp" required>
-               
-                <button id="isncription" type="submit">Créer</button>
-                <a href="">J'ai un compte</a>
+        <div class="inscription">
+            <form class="regist" action="" method="post">
+                <div>
+                    <h2>Inscription</h2>
+                    <div>
+                        <div>
+                            <label>Pseudonyme</label>
+                            <input type="text" name="pseudo" required>
+                        </div>
+                        <div>
+                            <label>Mot de passe</label>
+                            <input type="password" name="mdp" required>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div>
+                            <label>Vérification mot de passe</label>
+                            <input type="password" name="mdp" required>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="inscription" type="submit">Créer</button>
+                        <a href="{$login}">J'ai un compte</a>
+                    </div>
+                </div>
             </form>
         </div>
     EOF;

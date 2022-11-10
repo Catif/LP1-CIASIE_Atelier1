@@ -1,13 +1,16 @@
 <?php
 
 namespace atelier\view;
+use atelier\router\Router;
 
 class LoginView extends AppView {
 
     public function render():string{
+        $r = new Router();
+        $register = $r->urlFor('register');
         $html = <<<EOF
         <div class="connexion">
-            <form class="formCo" action="" method="post">
+            <form class="login" action="" method="post">
                 <h2 id="cou">Connexion</h2>
 
                 <label>Email</label>
@@ -17,7 +20,7 @@ class LoginView extends AppView {
                 <input type="password" name="mdp" required>
 
                 <button id="connexion" type="submit">Connexion</button>
-                <a href="">Inscritpion</a>
+                <a href="{$register}">Inscritpion</a>
             </form>
         </div>
     EOF;
