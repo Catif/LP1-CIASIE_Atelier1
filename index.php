@@ -1,5 +1,5 @@
 <?php
-
+use atelier\router\Router;
 /* pour le chargement automatique des classes d'Eloquent (dans le répertoire vendor) */
 require_once 'vendor/autoload.php';
 
@@ -21,11 +21,11 @@ $router->addRoute('login', 'connexion', 'atelier\control\LoginController');
 $router->addRoute('register', 'inscription', 'atelier\control\RegisterController');
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
-$router->addRoute('login', 'connexion', 'atelier\control\LoginController');
-$router->addRoute('register', 'inscription', 'atelier\control\RegisterController');
-
+$router->addRoute('login', 'login', 'atelier\control\LoginController');
+$router->addRoute('register', 'register', 'atelier\control\RegisterController');
 
 /* Route par défaut */
 $router->setDefaultRoute('home');
 
 $router->run();
+

@@ -1,19 +1,10 @@
-/*
-Error: File to import not found or unreadable: importAbout.
-       Load path: /home/tahri12u/Documents/github/LP1-CIASIE_Atelier1/html/style/sass
-        on line 9 of html/style/sass/main.scss
+@import url("https://use.typekit.net/rlk3vzd.css");
+body {
+  background-color: #151515;
+  color: #f4f4f4; }
 
-4: }
-5: 
-6: @import 'reset';
-7: @import 'charteGraphique';
-8: 
-9: @import 'importAbout';
-10: @import 'importAuthentication';
-11: @import 'importComponents';
-12: @import 'importGallery';
-13: @import 'importGroup';
-14: @import 'importHome';
+*, *:before, *:after {
+  box-sizing: border-box; }
 
 Backtrace:
 html/style/sass/main.scss:9
