@@ -7,8 +7,7 @@ use atelier\exceptions as E;
 abstract class AbstractAuthentification {
 
     /* une constante pour le niveau le plus bas */
-    const ACCESS_LEVEL_NONE = -9999;
-
+    const ACCESS_LEVEL_USER = 0;
     /* la taill minimum des mot de pass */
     const MIN_PASSWORD_LENGTH = 6;
       
@@ -98,7 +97,7 @@ abstract class AbstractAuthentification {
                 return true;
             }
         } else {
-            if ($requested > self::ACCESS_LEVEL_NONE){
+            if ($requested > self::ACCESS_LEVEL_USER){
                 return false;
             } else {
                 return true;

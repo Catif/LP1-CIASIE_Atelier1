@@ -1,5 +1,6 @@
 <?php
-use atelier\router\Router;
+use atelier\modele\User;
+use atelier\auth\Authentification;
 /* pour le chargement automatique des classes d'Eloquent (dans le répertoire vendor) */
 require_once 'vendor/autoload.php';
 
@@ -26,3 +27,11 @@ $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 $router->setDefaultRoute('home');
 
 $router->run();
+
+
+$u = new User();
+$u->username = 'Joe';
+$u->password = 'coucou';
+$u->email = 'test@gmail.fr';
+$u->level = 0;
+$u->save();

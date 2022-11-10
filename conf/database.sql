@@ -121,7 +121,8 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(55) DEFAULT NULL,
   `password` varchar(55) DEFAULT NULL,
-  `email` varchar(55) DEFAULT NULL
+  `email` varchar(55) DEFAULT NULL,
+  `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
