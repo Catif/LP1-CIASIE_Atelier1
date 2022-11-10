@@ -1,124 +1,131 @@
-
-.SaveButton{
-    @include buttonPrimary(219px);
-    margin-top: 50px;
-}
-.CancelButton{
-    @include buttonInput(219px);
-    display: flex;
-    margin-top: 8px;
-}
-
-.DeleteButton{
-    @include buttonDanger(219px);
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 45px;
-}
-
-h3{
-    margin-bottom: 20px;
-}
-
-#nameGroup{
-    height: 30px;
-    display: flex;
-    margin-top: 10px;
-}
-
-.form-nameGroup{
-    margin-top: 18px;
-    
-}
-
-#memberName{
-    height: 30px;
-    display: flex;
-    margin-top: 10px;
-    
-}
-
-.form-nameMember{
-    margin-top: 25px;
-    
-}
+#ModifyGroup{
 
 
-.form-CreateGroup{
-    display: flex;
-    flex-direction: column;
-
-}
-
-
-.form-CreateGroup input {
-    width: 100%;
-}
-
-.buttons{
-    margin-top: 10px;
-}
-
-
-
-
-
-
-@media (min-width:1000px){
-    .formul{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 25px;
-
+    .SaveButton{
+        @include buttonPrimary(219px);
+        margin-top: 12px;
     }
-
-    .buttons{
+    .CancelButton{
+        @include buttonInput(219px);
         display: flex;
-        flex-direction: row;
-    }
-    
-    .SaveButton {
         margin-top: 8px;
-        // margin-left: 30px;
     }
-
-    .header{
+    
+    
+    #nameGroup{
+        height: 30px;
         display: flex;
-        flex-direction: row;
+        margin-top: 10px;
     }
-    .DeleteButton{
-        margin-top: 0px;
-        margin-left: 40px;
-    }
-
+    
     .form-nameGroup{
-        width: 503px;
-        margin-right: 30px;
-    }
-
-    .CancelButton {
-        margin-top: 8px;
-        margin-left: 30px;
-    }
-
-    .form-nameMember{
-        width: 503px;
         margin-top: 18px;
+        
     }
-
-    h3{
-        font-weight: bold;
-    }
-
-    h2{
-        margin-bottom: 50px;
-    }
-
-    .form-CreateGroup{
+    
+    #memberName{
+        height: 30px;
         display: flex;
-        align-items: center;
-        // height: 1000px;
+        margin-top: 10px;
+        
+    }
+    
+    .form-nameMember{
+        margin-top: 25px;
+        
+    }
+    
+    
+    .form-Group{
+        display: flex;
+        flex-direction: column;
+    
+    }
+    
+    
+    .form-Group input {
+        width: 100%;
+    }
+    
+    .buttons{
+        margin-top: 10px;
+    }
+    
+    .DeleteButton{
+        @include buttonDanger(219px);
+        margin-top: 15px;
+        margin-bottom: 35px;
     }
 
-
-} 
+    #info{
+        margin-bottom: 20px;
+    }
+    
+    
+    
+    
+    @media (min-width:1000px){
+        .formul{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+    
+        .buttons{
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .CancelButton{
+            margin-top: 12px;
+            margin-left: 30px;
+        }
+    
+        .form-nameGroup{
+            width: 50%;
+            margin-right: 30px;
+        }
+    
+        .form-nameMember{
+            width: 50%;
+            margin-top: 18px;
+        }
+    
+        h3{
+            font-weight: bold;        
+            // margin-left: 100px;
+        }
+    
+        h2{
+            margin-bottom: 50px;
+        }
+    
+        .form-Group{
+            display: flex;
+            align-items: center;
+            // height: 1000px;
+        }
+    
+        .header{
+            // margin-left: 100px;
+            display: flex;
+            flex-direction: row;
+        }
+    
+        .SaveButton{
+            width: 150px;
+        }
+    
+        .DeleteButton{
+            @include buttonDanger(219px);
+            margin-left: 30px;
+            margin-top: 0;
+        }
+    
+        .CancelButton{
+            width: 150px;
+        }
+    
+    } 
+}

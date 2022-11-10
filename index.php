@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 
 /* Connexion à la BDD  */
 $db = new Illuminate\Database\Capsule\Manager();
-$db->addConnection(parse_ini_file('conf/config.ini'));   /* configuration avec nos paramètres */
+$db->addConnection(parse_ini_file('conf/db.ini'));   /* configuration avec nos paramètres */
 $db->setAsGlobal();            /* rendre la connexion visible dans tout le projet */
 $db->bootEloquent();           /* établir la connexion */
 
