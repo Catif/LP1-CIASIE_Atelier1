@@ -1,4 +1,4 @@
-let modal, imagesListEl, tabFile = [];
+let modal, imagesListEl;
 
 function init(){
     imagesListEl = document.querySelector('.images-list')
@@ -25,28 +25,32 @@ function initModal(){
             let divImage = imagesListEl.querySelector('#file-' + rang)
             
             divImage.querySelector('p').innerText = newTitlePicture
-            divImage.querySelector('input[name="title-image-' + rang + '"]').value = (newTitlePicture== undefined) ? tabFile[rang].name : newTitlePicture;
-            divImage.querySelector('input[name="tag-image-' + rang + '"]').value = (newTagPicture == undefined) ? '' : newTagPicture; 
 
-            tabFile[rang].tag = newTagPicture
-            
-            console.log('valider :')
-            console.log(tabFile)
+            if (newTitlePicture != ''){
+                divImage.querySelector('input[name="title-image-' + rang + '"]').value = newTitlePicture
+            }
+            if (newTagPicture != ''){
+                divImage.querySelector('input[name="tag-image-' + rang + '"]').value = newTagPicture; 
+            }
+
     })
 
     modal.querySelector('.footer [dataModal="annuler"]')
         .addEventListener('click', (e) => {
+            toggleScrollPage()
             modal.classList.remove('active')
-            console.log('valider')
+            console.log('fermeture')
     })
 }
 
-
+function toggleScrollPage(){
+    let body = document.querySelector('body')   
+    body.classList.toggle('no-scroll')
+}
 
 
 // Gestion d'ajout d'images
 function addImage(image){
-    console.log(image)
     let rang = image.rang
 
     let div = document.createElement('div')
@@ -68,6 +72,7 @@ function addImage(image){
         modal.querySelector('#numberImage').innerText = rang
 
         let imageFile = tabFile[rang]
+        console.log(imageFile)
 
         modal.querySelector('.body img').src = URL.createObjectURL(imageFile)
         modal.querySelector('.body input[name="MODAL-title-image"]').value = imageFile.name
@@ -83,10 +88,6 @@ function addImage(image){
 
 function addImages(tab){
     for(let i = 0; i < tab.length; i++){
-        tabFile.push(tab[i])
-        tabFile[tabFile.length-1].title = tab[i].name;
-        tabFile[tabFile.length-1].rang = tabFile.length-1;
-        tabFile[tabFile.length-1].tag = ''
         addImage(tab[i])
     }
 }

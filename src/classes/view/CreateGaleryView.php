@@ -7,13 +7,15 @@ class CreateGaleryView extends AppView {
         $urlActionForm = $this->router->urlFor('create-galery');
         $urlRetour = '';
 
-        // if (isset($_FILES)){
-        //     echo("<pre>");
-        //     var_dump($_FILES);
-        //     var_dump($_POST);
-        //     echo("</pre>");
-        // }
+        if (isset($_FILES)){
+            echo("<pre>");
+            var_dump($_FILES);
+            echo('<br>');
+            var_dump($_POST);
+            echo("</pre>");
+        }
 
+        AppView::addScript('html/js/Create-Edit_Galery.js');
         
         $html = <<<BLADE
         <article id="CreateGalery">
@@ -25,6 +27,13 @@ class CreateGaleryView extends AppView {
                     <input type="text" id="title" name="title" placeholder="Mon voyage en Papouasie..." required>
                 </div>
                 <div class="form-group">
+                    <label for="visibilite">Visibilité</label>
+                    <select name="visibilite" id="visibilite">
+                        <option value="0" selected>Public</option>
+                        <option value="1">Privé</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="tags">Tags</label>
                     <input type="text" id="tags" name="tags" placeholder="Voyage, Tourisme, Papouasie" required>
                 </div>
@@ -32,7 +41,7 @@ class CreateGaleryView extends AppView {
                     <label>Ajouter des images</label>
 
                     <label for="imagesUpload"><i class="bi bi-upload"></i></label>
-                    <input type="file" id="imagesUpload" name="images" multiple="multiple" accept="image/*" required>
+                    <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/*" required>
                 </div>
 
                 <div class="form-group">
@@ -63,8 +72,8 @@ class CreateGaleryView extends AppView {
                                 </div>
 
                                 <div class="footer">
-                                    <button dataModal="valider">Valider</button>
-                                    <button dataModal="annuler">Annuler</button>
+                                    <button type="button" dataModal="valider">Valider</button>
+                                    <button type="button" dataModal="annuler">Annuler</button>
                                 </div>
                             </div>
                             
@@ -85,7 +94,6 @@ class CreateGaleryView extends AppView {
             </form>
 
 
-            <script src="/html/js/Create-Edit_Galery.js"></script>
         </article>
         
         BLADE;

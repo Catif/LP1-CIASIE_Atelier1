@@ -20,6 +20,11 @@ article {
                 flex-direction: column;
                 gap: 5px;
 
+                select{
+                    background-color: $color-input;
+                    color: $color-contrastBlack;
+                    padding-left: 10px;
+                }
                 input[type='file']{
                     display: none;
                 }
@@ -113,7 +118,10 @@ article {
 
 
             .modal{
-                position: absolute;
+                display: none;
+            }
+            .modal.active{
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100vw;

@@ -13,6 +13,9 @@ $db->bootEloquent();           /* établir la connexion */
 /* Ajout de feuille de style */
 atelier\view\AppView::addStyle('html/style/css/main.css');
 
+/* Ajout de script JS */
+atelier\view\AppView::addScript('html/js/App.js');
+
 /* Création du router */
 $router = new atelier\router\Router();
 
