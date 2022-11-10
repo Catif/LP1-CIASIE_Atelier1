@@ -1,95 +1,198 @@
-#CreateGalery{
-    form{
-        width: 100%;
-        display: flex;
+article {
+    width: 100%;
+    #CreateGalery{
+        display:flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        margin-top: 20px;
 
-        .form-group{
+        form{
             width: 100%;
+            max-width: 280px;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
 
-            input[type='file']{
-                display: none;
+            .form-group{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                input[type='file']{
+                    display: none;
+                }
+                label[for='imagesUpload']{
+                    height: 35px;
+                    background: $color-input;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+
+                    font-size: 25px;
+
+                    &:hover{
+                        background-color: $color-contrastBlack;
+                        color: $color-contrastWhite;
+                    }
+                }
+
+                .images-list{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    margin-top: 10px;
+
+                    .image-file{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 5px 15px;
+                        width: 100%;
+                        height: 30px;
+                        background: $color-input;
+                        border-radius: 4px;
+                        gap: 10px;
+
+                        p {
+                            flex-grow: 1;
+                            font-size: 14px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        .image-actions{
+                            width: 40px;
+                            display: flex;
+                            justify-content: space-between;
+                            i{
+                                font-size: 18px;
+                                cursor: pointer;
+        
+                                &:nth-child(1){
+                                    color: $color-contrastBlack;
+                                }
+                                &:nth-child(2){
+                                    color: $color-red;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                textarea{
+                    height: 90px;
+                    background: $color-input;
+                    padding: 10px;
+                    font-size: 14px;
+                }
+
             }
-            label[for='imagesUpload']{
-                height: 35px;
-                background: $color-input;
+            .list-button{
+                width: 100%;
+                button{
+                    @include buttonPrimary(100%);
+                    margin-bottom: 10px;
+                }
+
+                a{
+                    @include buttonInput(100%);
+                }
+            }
+
+            
+
+
+
+
+            .modal{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba($color-contrastBlack, 0.6);
+
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-
-                font-size: 25px;
-
-                &:hover{
-                    background-color: $color-contrastBlack;
-                    color: $color-contrastWhite;
-                }
-            }
-
-            .images-list{
-                width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                margin-top: 10px;
-
-                .image-file{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 5px 15px;
-                    width: 100%;
-                    height: 30px;
-                    background: $color-input;
+                
+                .card{
+                    width: 95%;
+                    max-width: 640px;
+                    background-color: $color-contrastWhite;
+                    padding: 10px;
                     border-radius: 4px;
-                    max-width: 100%;
-                    p{
-                        font-size: 14px;
-                        overflow: hidden;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                    }
 
-                    i{
-                        font-size: 18px;
-                        cursor: pointer;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
-                        &:nth-child(1){
+                    .header{
+                        width: 100%;
+                        hr{
+                            border-top: none;
+                            border-width: 1px;
                             color: $color-contrastBlack;
                         }
-                        &:nth-child(2){
-                            color: $color-red;
+                    }
+                    
+                    .body{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 30px;
+                        padding-top: 20px;
+                        width: 85%;
+
+                        img{display:none;}
+                        
+                        .form{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 20px;
+
+                            .form-group{
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+    
+                                label{
+                                    font-size: 14px;
+                                }
+                                input{
+                                    height: 35px;
+                                    background: $color-input;
+                                    padding: 10px;
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+                        .footer{
+                            display: flex;
+                            justify-content: flex-end;
+                            button[dataModal="valider"]{
+                                @include buttonPrimary(100px);
+                            }
+
+                            button[dataModal="annuler"]{
+                                @include buttonInput(100px);
+                            }
                         }
                     }
+                    
+                    
+                    
+                    
                 }
-            }
-
-
-            textarea{
-                height: 90px;
-                background: $color-input;
-                padding: 10px;
-                font-size: 14px;
-            }
-
-        }
-        .list-button{
-            width: 100%;
-            button{
-                @include buttonPrimary(100%);
-                margin-bottom: 10px;
-            }
-
-            a{
-                @include buttonInput(100%);
             }
         }
     }
