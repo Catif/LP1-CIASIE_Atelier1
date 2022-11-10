@@ -2,7 +2,7 @@
 
 namespace atelier\auth;
 use atelier\auth\AbstractAuthentification;
-use atelier\model\User;
+use atelier\modele\User;
 use atelier\exceptions\AuthentificationException;
 
 class Authentification extends AbstractAuthentification {
@@ -12,19 +12,16 @@ class Authentification extends AbstractAuthentification {
 public static function register(string $username,
                                 string $password,
                                 string $email,
-                                string $passVerif,
                                 $level=self::ACCESS_LEVEL_USER): void {
         $user = User::where('username', '=', $username)->first();
         if ($user){
             throw new AuthentificationException('Nom d\'utilisateur déjà utilisé.');
         } else {
             $hash = self::makePassword($password);
-            $hashVerif = self::makePassword($passVerif);
             $userRegister = new User();
             $userRegister->email = $email;
             $userRegister->username = $username;
             $userRegister->password = $hash;
-            $userRegister->passVerif = $hashVerif;
             $userRegister->level = $level;
             $userRegister->save();
         }
@@ -50,7 +47,7 @@ public static function register(string $username,
         *
         */
 
-public static function login(string $username, string $password): void {
+public static function login(string $email, string $password): void {
 
        /* La méthode login
         *
@@ -72,8 +69,9 @@ public static function login(string $username, string $password): void {
         *            ATTENTION : utiliser self::checkPassword (cf. ``AbstractAuthentification``)
         *
         */
-        $user = User::where('username', '=', $username);
+        $user = User::where('email', '=', $email)->first();
         if ($user){
+            echo "bonjour";
             self::checkPassword($password, $user->password, $user->id, $user->level);
         } else {
             throw new AuthentificationException('Utilisateur introuvable');

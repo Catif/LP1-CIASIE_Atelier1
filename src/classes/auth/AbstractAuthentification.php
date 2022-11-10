@@ -25,9 +25,9 @@ abstract class AbstractAuthentification {
          *    $level : son niveau d'accès
          * 
          */
-
         $_SESSION['user_profile']['id'] = $id;
         $_SESSION['user_profile']['access_level'] = $level;
+        
     }
         
      

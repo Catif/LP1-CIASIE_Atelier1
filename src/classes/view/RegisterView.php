@@ -19,7 +19,7 @@ class RegisterView extends AppView {
                         </div>
                         <div>
                             <label>Mot de passe</label>
-                            <input type="password" name="pass" required>
+                            <input type="password" name="password" required>
                         </div>
                     </div>
                     <div>
@@ -29,7 +29,7 @@ class RegisterView extends AppView {
                         </div>
                         <div>
                             <label>Vérification mot de passe</label>
-                            <input type="password" name="passVerif" required>
+                            <input type="password" name="passwordVerif" required>
                         </div>
                     </div>
                     <div>
