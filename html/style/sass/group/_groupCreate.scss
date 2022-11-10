@@ -1,1 +1,100 @@
 
+.CreerButton{
+    @include buttonPrimary(219px);
+    margin-top: 12px;
+}
+.AnnulerButton{
+    @include buttonInput(219px);
+    display: flex;
+    margin-top: 8px;
+}
+
+
+#nameGroup{
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.form-nameGroup{
+    margin-top: 18px;
+    
+}
+
+#memberName{
+    height: 30px;
+    display: flex;
+    margin-top: 10px;
+    
+}
+
+.form-nameMember{
+    margin-top: 25px;
+    
+}
+
+
+.form-CreateGroup{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.form-CreateGroup input {
+    width: 100%;
+}
+
+.buttons{
+    margin-top: 10px;
+}
+
+
+
+
+
+
+@media (min-width:1000px){
+    .formul{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 25px;
+
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .AnnulerButton{
+        margin-top: 12px;
+        margin-left: 30px;
+    }
+
+    .form-nameGroup{
+        width: 503px;
+        margin-right: 30px;
+    }
+
+    .form-nameMember{
+        width: 503px;
+        margin-top: 18px;
+    }
+
+    h3{
+        font-weight: bold;
+    }
+
+    h2{
+        margin-bottom: 50px;
+    }
+
+    .form-CreateGroup{
+        display: flex;
+        align-items: center;
+        // height: 1000px;
+    }
+
+
+} 

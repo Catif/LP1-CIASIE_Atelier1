@@ -2,10 +2,13 @@
 
 namespace atelier\view;
 
-class CreateGroupView extends AppView {
-    public function render() : string{
+class ModifyGroupView extends AppView{
+    public function render(): string {
         $html = <<<EOF
-            <h2>Créer un groupe</h2></br>
+            <div class="header">
+            <h2>Modifier le groupe</h2>
+            <button class="DeleteButton">Supprimer le groupe</button>
+            </div>
             <h3>Informations</h3>
 
             <form action="" method="get" class="form-CreateGroup">
@@ -16,20 +19,18 @@ class CreateGroupView extends AppView {
                         <input type="text" name="name" id="nameGroup" required>
                     </div>
                     <div class="form-nameMember">
-                        <label for="name">Nom des membres  </label>
+                        <label for="name">Membres  </label>
 
                         <input type="text" name="name" id="memberName" required>
                     </div>
                 </div>  
                 <div class="buttons">
-                    <button class="CreerButton">Créer</button>
-                    <button class="AnnulerButton">Annuler</button>
+                    <button class="SaveButton">Sauvgarder</button>
+                    <button class="CancelButton">Annuler</button>
                 </div>
             </form>
             
             
-            
-                
 
 
         EOF;
