@@ -4,7 +4,6 @@ namespace atelier\control;
 
 use atelier\auth\Authentification;
 use atelier\view as View;
-use Illuminate\Contracts\Auth\Authenticatable;
 use atelier\router\Router;
 
 class LoginController extends AbstractController{
@@ -16,7 +15,9 @@ class LoginController extends AbstractController{
             if($this->request->method === 'POST'){
                 $email = filter_input(INPUT_POST, "email");
                 $email = strtolower($email);
+
                 $password = filter_input(INPUT_POST, "password");
+                
                 Authentification::login($email,$password);
                 header("Location: ".$r->urlFor("home"));
             } else {

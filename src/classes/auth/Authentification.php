@@ -72,7 +72,6 @@ public static function login(string $email, string $password): void {
         */
         $user = User::where('email', '=', $email)->first();
         if ($user){
-            echo "bonjour";
             self::checkPassword($password, $user->password, $user->id, $user->level);
         } else {
             throw new AuthentificationException('Utilisateur introuvable');
