@@ -1,9 +1,11 @@
-let modal, imagesListEl;
+let modal, imagesListEl, tabFile, buttonSubmit;
 
 function init(){
-    imagesListEl = document.querySelector('.images-list')
     modal = document.querySelector('.modal')
-    console.log(modal)
+    imagesListEl = document.querySelector('.images-list')
+    tabFile = []
+    buttonSubmit = document.querySelector('.list-button button[type="submit"]')
+
     initModal();
 
     document.querySelector('#imagesUpload').addEventListener('change', (e) => {
@@ -13,43 +15,42 @@ function init(){
 }
 
 
-function initModal(){
-    modal.querySelector('.footer [dataModal="valider"]')
-        .addEventListener('click', (e) => {
-            modal.classList.remove('active')
-            let rang = modal.querySelector('#numberImage').innerText
 
-            let newTitlePicture = modal.querySelector('.body input[name="MODAL-title-image"]').value
-            let newTagPicture = modal.querySelector('.body input[name="MODAL-tag-image"]').value
 
-            let divImage = imagesListEl.querySelector('#file-' + rang)
-            
-            divImage.querySelector('p').innerText = newTitlePicture
 
-            if (newTitlePicture != ''){
-                divImage.querySelector('input[name="title-image-' + rang + '"]').value = newTitlePicture
-            }
-            if (newTagPicture != ''){
-                divImage.querySelector('input[name="tag-image-' + rang + '"]').value = newTagPicture; 
-            }
 
-    })
 
-    modal.querySelector('.footer [dataModal="annuler"]')
-        .addEventListener('click', (e) => {
-            toggleScrollPage()
-            modal.classList.remove('active')
-            console.log('fermeture')
-    })
+
+
+
+
+
+// ===========================
+//    Gestion Ajout d'image
+// ===========================
+function addImages(tab){
+    imagesListEl.innerHTML = ""
+
+    let tabPictureUpload = Array.from(tab)
+
+    buttonSubmit.disabled = true;
+    if (tabPictureUpload.length > 0 && tabPictureUpload.length <= 4){
+        buttonSubmit.disabled = false;
+        tabPictureUpload.forEach((image, index) => {
+            image.rang = index;
+            tabFile.push(image)
+            addImage(image)
+        })
+
+    } else if (tabPictureUpload.length > 4){
+        imagesListEl.innerHTML = `<p style="color:#FF0000">Vous ne pouvez pas ajouter plus de 4 images à la fois</p>`;
+        alert("Vous ne pouvez pas ajouter plus de 4 images à la fois")
+
+    } else if (tabPictureUpload.length == 0){
+        imagesListEl.innerHTML = `<p>Aucune image pour le moment...</p>`;
+    }
 }
 
-function toggleScrollPage(){
-    let body = document.querySelector('body')   
-    body.classList.toggle('no-scroll')
-}
-
-
-// Gestion d'ajout d'images
 function addImage(image){
     let rang = image.rang
 
@@ -63,34 +64,116 @@ function addImage(image){
 
         <div class="image-actions">
             <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-x-lg"></i>
         </div>
     `
 
     div.querySelector('.bi-pencil-square').addEventListener('click', (e) => {
-        modal.classList.add('active')
-        modal.querySelector('#numberImage').innerText = rang
-
-        let imageFile = tabFile[rang]
-        console.log(imageFile)
-
-        modal.querySelector('.body img').src = URL.createObjectURL(imageFile)
-        modal.querySelector('.body input[name="MODAL-title-image"]').value = imageFile.name
-        modal.querySelector('.body input[name="MODAL-tag-image"]').value = imageFile.tag
-    })
-
-    div.querySelector('.bi-x-lg').addEventListener('click', (e) => {
-        imagesListEl.removeChild(div)
+        openModal(rang)
     })
     
     imagesListEl.appendChild(div)
 }
 
-function addImages(tab){
-    for(let i = 0; i < tab.length; i++){
-        addImage(tab[i])
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===========
+//    MODAL
+// ===========
+function initModal(){
+    modal.querySelector('.footer [dataModal="valider"]')
+        .addEventListener('click', (e) => {
+            let rang = modal.querySelector('#numberImage').innerText
+
+            let newTitlePicture = modal.querySelector('.body input[name="MODAL-title-image"]').value
+            let newTagPicture = modal.querySelector('.body input[name="MODAL-tag-image"]').value
+
+            let divImage = imagesListEl.querySelector('#file-' + rang)
+            
+            divImage.querySelector('p').innerText = newTitlePicture
+
+            if (newTitlePicture){
+                divImage.querySelector('input[name="title-image-' + rang + '"]').value = newTitlePicture
+            }
+
+            if (newTagPicture){
+                divImage.querySelector('input[name="tag-image-' + rang + '"]').value = newTagPicture; 
+            } else {
+                divImage.querySelector('input[name="tag-image-' + rang + '"]').value = '';
+            }
+
+            closeModal()
+    })
+
+    modal.querySelector('.footer [dataModal="annuler"]')
+        .addEventListener('click', (e) => {
+            closeModal()
+            modal.classList.remove('active')
+            console.log('fermeture')
+    })
 }
+
+function openModal(rang){
+    modal.querySelector('#numberImage').innerText = rang + 1 
+
+    let titleImage = imagesListEl.querySelector(`input[name="title-image-${rang}`).value
+    let tagImage = imagesListEl.querySelector(`input[name="tag-image-${rang}`).value
+
+    let image = tabFile[rang]
+
+    modal.querySelector('.body img').src = URL.createObjectURL(image)
+
+    modal.querySelector('.body input[name="MODAL-title-image"]').value = titleImage
+    modal.querySelector('.body input[name="MODAL-tag-image"]').value = tagImage
+
+    modal.querySelector('.body input[name="MODAL-title-image"]').disabled = false
+    modal.querySelector('.body input[name="MODAL-tag-image"]').disabled = false
+
+    modal.classList.add('active')
+    document.body.classList.add('no-scroll')
+}
+
+function closeModal(){
+    modal.querySelector('#numberImage').innerText = ''
+    modal.querySelector('.body img').src = ''
+
+    modal.querySelector('.body input[name="MODAL-title-image"]').value = ''
+    modal.querySelector('.body input[name="MODAL-tag-image"]').value = ''
+
+    modal.querySelector('.body input[name="MODAL-title-image"]').disabled = true
+    modal.querySelector('.body input[name="MODAL-tag-image"]').disabled = true
+
+    modal.classList.remove('active')
+    document.body.classList.remove('no-scroll')
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 window.addEventListener('load', init)

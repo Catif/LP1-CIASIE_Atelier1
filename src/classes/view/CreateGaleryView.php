@@ -45,10 +45,12 @@ class CreateGaleryView extends AppView {
                 </div>
 
                 <div class="form-group">
-                    <label for="images-list">Fichiers téléversés</label>
+                    <label for="images-list">Images téléversés</label>
+                    <span>(2Mo maximum par image)</span>
                     <div class="images-list">
-                        
+                        <p>Aucune image pour le moment...</p>
                     </div>
+                    
 
                     <div class="modal">
                         <div class="card">
@@ -84,11 +86,11 @@ class CreateGaleryView extends AppView {
 
                 <div class="form-group">
                     <label for="title">Description</label>
-                    <textarea type="text" id="title" name="title" placeholder="Blablabla" required></textarea>
+                    <textarea type="text" id="description" name="title" placeholder="Blablabla" required></textarea>
                 </div>
 
                 <div class="list-button">
-                    <button type="submit">Créer ma galerie</button>
+                    <button type="submit" disabled>Créer ma galerie</button>
                     <a href="${urlRetour}">Annuler</a>
                 </div>
             </form>
