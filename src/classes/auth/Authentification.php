@@ -1,6 +1,7 @@
 <?php
 
 namespace atelier\auth;
+
 use atelier\auth\AbstractAuthentification;
 use atelier\modele\User;
 use atelier\exceptions\AuthentificationException;

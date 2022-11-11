@@ -27,11 +27,3 @@ $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 $router->setDefaultRoute('home');
 
 $router->run();
-
-
-$u = new User();
-$u->username = 'Joe';
-$u->password = 'coucou';
-$u->email = 'test@gmail.fr';
-$u->level = 0;
-$u->save();

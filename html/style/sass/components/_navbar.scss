@@ -40,7 +40,7 @@ nav {
             }
         }
     }
-
+    
     &>i{
         color: $color-contrastWhite;
         font-size: 20px;
@@ -148,8 +148,8 @@ nav {
             }
         }
     }
-
-
+    
+    
     &.active{
         position: fixed;
         width: 100vw;
