@@ -26,8 +26,8 @@ $router->addRoute('about', 'about', 'atelier\control\AboutController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 
-$router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
-$router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController');
+$router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
+$router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);
 
 
 /* Route par défaut */

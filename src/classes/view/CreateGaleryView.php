@@ -7,13 +7,7 @@ class CreateGaleryView extends AppView {
         $urlActionForm = $this->router->urlFor('create-galery');
         $urlRetour = '';
 
-        if (isset($_FILES)){
-            echo("<pre>");
-            var_dump($_FILES);
-            echo('<br>');
-            var_dump($_POST);
-            echo("</pre>");
-        }
+        
 
         AppView::addScript('html/js/Create-Edit_Galery.js');
         
@@ -41,7 +35,7 @@ class CreateGaleryView extends AppView {
                     <label>Ajouter des images</label>
 
                     <label for="imagesUpload"><i class="bi bi-upload"></i></label>
-                    <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/*" required>
+                    <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/png, image/gif, image/jpg, image/jpeg" required>
                 </div>
 
                 <div class="form-group">
@@ -86,7 +80,7 @@ class CreateGaleryView extends AppView {
 
                 <div class="form-group">
                     <label for="title">Description</label>
-                    <textarea type="text" id="description" name="title" placeholder="Blablabla" required></textarea>
+                    <textarea type="text" id="description" name="description" placeholder="Blablabla" required></textarea>
                 </div>
 
                 <div class="list-button">

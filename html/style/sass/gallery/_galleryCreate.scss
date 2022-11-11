@@ -25,6 +25,9 @@ article {
                     color: $color-contrastBlack;
                     padding-left: 10px;
                 }
+                input{
+                    width: 100%;
+                }
                 input[type='file']{
                     display: none;
                 }

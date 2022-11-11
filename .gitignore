@@ -1,7 +1,9 @@
 vendor/
 .sass-cache/
 
+css/
+
+
 conf/db.ini
 
-main.css
-main.css.map
+galeries/
