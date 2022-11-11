@@ -22,8 +22,10 @@ $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
+$router->addRoute('about', 'about', 'atelier\control\AboutController');
 
 /* Route par défaut */
 $router->setDefaultRoute('home');
 
 $router->run();
+
