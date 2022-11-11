@@ -33,12 +33,12 @@ class CreateGaleryController extends AbstractController{
                     $imageExt = explode('.', $image);
                     $imageExt = strtolower(end($imageExt));
                     
-                    $allowed = array('jpg', 'jpeg', 'png', 'gif');
+                    $allowed = array('png', 'gif', 'jfif', 'pjpeg', 'jpeg', 'pjp', 'jpg', 'webp');
                     
                     if (in_array($imageExt, $allowed)){
                         if ($imageError === 0){
                             if ($imageSize <= 2097152){
-                                $imageNameNew = uniqid('picture_', true) . '.' . $imageExt;
+                                $imageNameNew = uniqid('', true) . '.' . $imageExt;
                                 $userId = $_SESSION['user_profile']['id'];
                                 $destination = 'html/img/galeries/' . $userId .'/';
                                 if (!is_dir($destination)){

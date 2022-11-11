@@ -35,7 +35,7 @@ class CreateGaleryView extends AppView {
                     <label>Ajouter des images</label>
 
                     <label for="imagesUpload"><i class="bi bi-upload"></i></label>
-                    <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/png, image/gif, image/jpg, image/jpeg" required>
+                    <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/png, image/gif, image/jpg, image/jpeg, image/webp" required>
                 </div>
 
                 <div class="form-group">
