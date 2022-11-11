@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 11 nov. 2022 à 15:57
+-- Généré le : ven. 11 nov. 2022 à 16:46
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `galery` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `tags` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `description` text,
   `private` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
