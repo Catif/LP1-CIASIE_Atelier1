@@ -97,15 +97,16 @@ function initModal(){
     modal.querySelector('.footer [dataModal="valider"]')
         .addEventListener('click', (e) => {
             let rang = modal.querySelector('#numberImage').innerText
+            rang = parseInt(rang) - 1
 
             let newTitlePicture = modal.querySelector('.body input[name="MODAL-title-image"]').value
             let newTagPicture = modal.querySelector('.body input[name="MODAL-tag-image"]').value
 
             let divImage = imagesListEl.querySelector('#file-' + rang)
+            console.log(divImage)
             
-            divImage.querySelector('p').innerText = newTitlePicture
-
             if (newTitlePicture){
+                divImage.querySelector('p').innerText = newTitlePicture
                 divImage.querySelector('input[name="title-image-' + rang + '"]').value = newTitlePicture
             }
 
