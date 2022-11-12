@@ -12,8 +12,9 @@
     gap: 25px 50px;
 
     #pic{
-        width: 100%;
-        max-width: 1180px;
+        // width: 100%;
+        // max-width: 1180px;
+        max-width: 100%;
         height: auto;
         border-radius: 4px;
     }
@@ -52,25 +53,31 @@
     #comments-list{
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 25px 0px;
 
 
         .comment{
+            max-width: 1500px ;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px 0px;
             background-color: $color-input;
             color: $color-contrastBlack;
-            padding: 45px;
+            padding: 25px;
             border-radius: 4px;
-            gap: 0px 25px;
 
             div{
                 display: flex;
                 flex-direction: column;
+                align-items: center;
+                gap: 15px 0px;
 
                 .author-pfp{
-                    width: 90px;
-                    height: 90px;
-                    background-color: red;
+                    width: 75px;
+                    height: 75px;
+                    background-color: $color-contrastBlack;
                     border-radius: 100%;
                 }
             }
@@ -81,5 +88,12 @@
 @media screen and (min-width: 1180px){
     #picture{
         padding: 45px;
+    }
+}
+
+@media screen and (min-width: 675px){
+    .comment{
+        flex-direction: row !important;
+        gap: 40px !important;
     }
 }

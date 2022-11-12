@@ -6,7 +6,7 @@ class PictureView extends AppView {
     public function render() : string{
         $html = <<<BLADE
         <div id="picture-header">
-            <img id="pic" src="https://loremflickr.com/3840/2160/city" alt="image">
+            <img id="pic" src="https://picsum.photos/1280/720" alt="image">
             <div id="picture-infos">
                 <div>
                     <h2>Titre</h2>
@@ -42,14 +42,14 @@ class PictureView extends AppView {
                         <div class="author-pfp"><img src=""></div>
                         <p class="author-name">John_doe13</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium pellentesque ipsum a elementum. In hac habitasse platea dictumst. Duis urna est, pellentesque a lacinia a, porta in quam. Suspendisse at malesuada libero. Morbi tristique semper eros eget ultrices. Vestibulum eget tristique arcu. Curabitur congue erat vitae sodales dictum. Vivamus vestibulum nisl ex, non facilisis purus viverra ac. Vivamus tincidunt porttitor mi, non convallis tortor suscipit in. Ut porta vestibulum elit at bibendum. Pellentesque enim elit, feugiat nec lacus a, molestie volutpat tellus. Phasellus eu est consequat, eleifend lectus sed, congue orci.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium pellentesque ipsum a elementum. In hac habitasse platea dictumst. Duis urna est, pellentesque a lacinia a, porta in quam. Suspendisse at malesuada libero.</p>
                 </div>
                 <div class="comment">
                     <div>
                         <div class="author-pfp"><img src=""></div>
-                        <p class="author-name">Catif19</p>
+                        <p class="author-name">Catif_19</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium pellentesque ipsum a elementum. In hac habitasse platea dictumst. Duis urna est, pellentesque a lacinia a, porta in quam. Suspendisse at malesuada libero. Morbi tristique semper eros eget ultrices. Vestibulum eget tristique arcu. Curabitur congue erat vitae sodales dictum. Vivamus vestibulum nisl ex, non facilisis purus viverra ac. Vivamus tincidunt porttitor mi, non convallis tortor suscipit in. Ut porta vestibulum elit at bibendum. Pellentesque enim elit, feugiat nec lacus a, molestie volutpat tellus. Phasellus eu est consequat, eleifend lectus sed, congue orci.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium pellentesque ipsum a elementum. In hac habitasse platea dictumst. Duis urna est, pellentesque a lacinia a, porta in quam. Suspendisse at malesuada libero. Morbi tristique semper eros eget ultrices. Vestibulum eget tristique arcu.</p>
                 </div>
             </div>
         </div>

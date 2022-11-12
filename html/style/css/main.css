@@ -351,8 +351,7 @@ nav.active .list-items h2 {
   gap: 25px 50px;
 }
 #picture-header #pic {
-  width: 100%;
-  max-width: 1180px;
+  max-width: 100%;
   height: auto;
   border-radius: 4px;
 }
@@ -398,24 +397,30 @@ nav.active .list-items h2 {
 #comments #comments-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 25px 0px;
 }
 #comments #comments-list .comment {
+  max-width: 1500px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px 0px;
   background-color: #D9D9D9;
   color: #0B162C;
-  padding: 45px;
+  padding: 25px;
   border-radius: 4px;
-  gap: 0px 25px;
 }
 #comments #comments-list .comment div {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 15px 0px;
 }
 #comments #comments-list .comment div .author-pfp {
-  width: 90px;
-  height: 90px;
-  background-color: red;
+  width: 75px;
+  height: 75px;
+  background-color: #0B162C;
   border-radius: 100%;
 }
 
@@ -424,9 +429,20 @@ nav.active .list-items h2 {
     padding: 45px;
   }
 }
+@media screen and (min-width: 675px) {
+  .comment {
+    flex-direction: row !important;
+    gap: 40px !important;
+  }
+}
+#profile {
+  display: flex;
+  flex-direction: column;
+  gap: 25px 0px;
+}
+
 #galery-list {
   overflow-x: scroll;
-  border: 3px solid green;
   padding: 10px;
   display: flex;
   gap: 20px;

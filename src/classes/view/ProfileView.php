@@ -14,10 +14,6 @@ class ProfileView extends AppView {
             <div></div>
             <div></div>
             <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
         </div>
         BLADE;
 
