@@ -16,4 +16,8 @@ class Galery extends Model{
     public function pictures(){
         return $this->hasMany('atelier\modele\Picture', 'id_galery');
     }
+
+    public function tags(){
+        return $this->belongsToMany('atelier\modele\Tag', 'galery_tag', 'id_galery', 'id_tag');
+    }
 }

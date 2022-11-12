@@ -4,6 +4,8 @@ namespace atelier\control;
 
 use atelier\view as View;
 
+use atelier\modele as Modele;
+
 class CreateGaleryController extends AbstractController{
     public function execute() : void {
         
@@ -24,6 +26,36 @@ class CreateGaleryController extends AbstractController{
                 echo ("Trop d'images");
             } else if ($numberImages <= 4){
                 echo("Nombre d'images correct");
+
+                $galerie = new Modele\Galery();
+                $galerie->title = $_POST['title'];
+                $galerie->description = $_POST['description'];
+                $galerie->private = $_POST['visibilite'];
+                $galerie->save();
+
+                $tabTagsGalerie = explode(',', $_POST['tags']);
+                foreach($tabTagsGalerie as $tag){
+                    $tag = trim($tag);
+                    $tag = strtolower($tag);
+                    $tag = ucfirst($tag);
+                    $tag = Modele\Tag::firstOrCreate(['name' => $tag]);
+                    $galerie->tags()->attach($tag);
+                }
+
+                $userId = $_SESSION['user_profile']['id'];
+                                
+                $destination = 'html/img/users/' . $userId .'/';
+                if (!is_dir($destination)){
+                    mkdir($destination);
+                }
+                if (!is_dir($destination . 'galeries/')){
+                    mkdir($destination . 'galeries/');
+                }
+                if (!is_dir($destination . 'galeries/' . $galerie->id)){
+                    mkdir($destination . 'galeries/' . $galerie->id);
+                }
+                $destination = $destination . 'galeries/' . $galerie->id . '/';
+
                 for($i = 0; $i < $numberImages; $i++){
                     $image = $tabImages['name'][$i];
                     $imageSize = $tabImages['size'][$i];
@@ -39,14 +71,28 @@ class CreateGaleryController extends AbstractController{
                         if ($imageError === 0){
                             if ($imageSize <= 2097152){
                                 $imageNameNew = uniqid('', true) . '.' . $imageExt;
-                                $userId = $_SESSION['user_profile']['id'];
-                                $destination = 'html/img/galeries/' . $userId .'/';
-                                if (!is_dir($destination)){
-                                    mkdir($destination);
-                                }
+                                
                                 move_uploaded_file($imageTmp, $destination . $imageNameNew);
-                                echo($i . "Image téléversée");
 
+                                $picture = new Modele\Picture();
+                                $picture->title = $_POST['title-image-' . $i];
+                                $picture->name_file = $destination . $imageNameNew;
+                                $picture->save();
+                                $galerie->pictures()->save($picture);
+                                
+                                if (!empty($_POST['tags-image-' . $i])){
+                                    $listTags = explode(',', $_POST['tag-image-' . $i]);
+                                    foreach($listTags as $tag){
+                                        $tag = trim($tag);
+                                        $tag = strtolower($tag);
+                                        $tag = ucfirst($tag);
+                                        $tag = Modele\Tag::firstOrCreate(['name' => $tag]);
+                                        $picture->tags()->attach($tag);
+                                    }
+                                }
+
+                                echo($i . "Image téléversée");
+                                
                             } else {
                                 echo($i . "Image trop lourde");
                             }
@@ -56,7 +102,12 @@ class CreateGaleryController extends AbstractController{
                     } else {
                         echo($i . "Format d'image non supporté");
                     }
+
+                    
                 }
+
+                $user = Modele\User::find($_SESSION['user_profile']['id']);
+                $user->galeries()->attach($galerie);
             }
         }
 
