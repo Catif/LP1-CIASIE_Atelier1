@@ -17,7 +17,11 @@ function init(){
 
 
 
-
+function moreThan2mb(file){
+    if (file.size > 2000000){
+        return true
+    }
+}
 
 
 
@@ -32,22 +36,31 @@ function addImages(tab){
     imagesListEl.innerHTML = ""
 
     let tabPictureUpload = Array.from(tab)
-
     buttonSubmit.disabled = true;
-    if (tabPictureUpload.length > 0 && tabPictureUpload.length <= 4){
-        buttonSubmit.disabled = false;
-        tabPictureUpload.forEach((image, index) => {
-            image.rang = index;
-            tabFile.push(image)
-            addImage(image)
-        })
 
-    } else if (tabPictureUpload.length > 4){
-        imagesListEl.innerHTML = `<p style="color:#FF0000">Vous ne pouvez pas ajouter plus de 4 images à la fois</p>`;
-        alert("Vous ne pouvez pas ajouter plus de 4 images à la fois")
+    try {
+        if (tabPictureUpload.length > 0 && tabPictureUpload.length <= 4){
+            buttonSubmit.disabled = false;
+                tabPictureUpload.forEach((image, index) => {
+                    if (moreThan2mb(image)){
+                        throw new Error('Une des images est trop lourde. (2Mo max / image)');
+                    }
+                    image.rang = index;
+                    tabFile.push(image)
+                    addImage(image)
+                })
+            
 
-    } else if (tabPictureUpload.length == 0){
-        imagesListEl.innerHTML = `<p>Aucune image pour le moment...</p>`;
+        } else if (tabPictureUpload.length > 4){
+            throw new Error('Vous ne pouvez pas ajouter plus de 4 images à la fois.');
+
+        } else if (tabPictureUpload.length == 0){
+            imagesListEl.innerHTML = `<p>Aucune image pour le moment...</p>`;
+        }
+    } catch (e) {
+        buttonSubmit.disabled = true;
+        imagesListEl.innerHTML = `<p style="color:#FF0000">${e.message}</p>`;
+        setTimeout(() => alert(e.message), 1)
     }
 }
 
