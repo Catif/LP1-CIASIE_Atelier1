@@ -59,10 +59,13 @@ abstract class AppView extends AbstractView implements Renderer{
             </div>
             BLADE;
         } else {
+            $urlConnexion = $this->router->urlFor('login');
+            $urlInscription = $this->router->urlFor('register');
+
             $navItems = <<<BLADE
             <a href=""><h2>A propos</h2></a>
-            <a href=""><h2 id="login">Connexion</h2></a>
-            <a href=""><h2 id="register">Inscription</h2></a>
+            <a href="${urlConnexion}"><h2 id="login">Connexion</h2></a>
+            <a href="${urlInscription}"><h2 id="register">Inscription</h2></a>
             BLADE;
         }
 

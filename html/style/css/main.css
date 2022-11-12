@@ -98,7 +98,7 @@ input {
   padding: 10px;
   font-size: 14px;
   font-weight: 400;
-  max-width: 190px;
+  width: 190px;
   color: #0B162C;
 }
 
@@ -337,6 +337,183 @@ nav.active .list-items h2 {
   text-align: center;
 }
 
+.about div {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.about div div a {
+  width: 50%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #0B162C;
+  color: #F4F4F4;
+}
+
+.about > p {
+  margin-bottom: 1em;
+}
+
+.about h2, .about > p, .about div div p {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.about div > *:not(a) {
+  width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+  .about div {
+    flex-direction: column;
+    gap: 2em;
+  }
+  .about div div {
+    flex-direction: row;
+    gap: 2em;
+  }
+  .about div div p {
+    margin-top: 0;
+    text-align: end;
+    flex-basis: 50%;
+    white-space: nowrap;
+  }
+}
+.login > * {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0 20px 0;
+}
+
+.login h2 {
+  margin-top: 4em;
+  text-align: center;
+}
+
+#connexion {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #0B162C;
+  color: #F4F4F4;
+}
+
+.login a {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #D9D9D9;
+  color: #0B162C;
+}
+
+.regist div {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.regist h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.regist input {
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.regist div div {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+#inscription {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #0B162C;
+  color: #F4F4F4;
+  margin-bottom: 1em;
+}
+
+.regist a {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #D9D9D9;
+  color: #0B162C;
+}
+
+@media screen and (min-width: 500px) {
+  .regist div div {
+    flex-direction: row;
+  }
+  .regist div div div {
+    white-space: nowrap;
+  }
+  .regist div div div {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+  }
+  .regist div div div:nth-child(2n+1) {
+    margin-right: 3em;
+  }
+  .regist div div:nth-child(4) {
+    display: flex;
+    flex-direction: column;
+  }
+  #inscription, .regist div div a {
+    width: 100%;
+  }
+}
 #picture {
   z-index: 0;
   padding: 20px;

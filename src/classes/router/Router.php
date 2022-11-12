@@ -7,7 +7,7 @@ use Exception;
 
 class Router extends AbstractRouter {
 
-    public function addRoute(string $name, string $action, string $ctrl, string $level = AbstractAuthentification::ACCESS_LEVEL_NONE): void{
+    public function addRoute(string $name, string $action, string $ctrl, string $level = AbstractAuthentification::ACCESS_LEVEL_USER): void{
         self::$routes[$action] = [$ctrl, $level];
         self::$aliases[$name] = $action;
     }
