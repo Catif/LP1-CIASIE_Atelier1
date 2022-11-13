@@ -42,11 +42,12 @@ abstract class AppView extends AbstractView implements Renderer{
         $navItems = "";
         if (Authentification::connectedUser()) {
             $urlProfile = $this->router->urlFor('profile');
+            $urlLogout = $this->router->urlFor('logout');
             
             $navItems = <<<BLADE
             <a href="${urlProfile}"><h2>Profil</h2></a>
             <a href=""><h2>A propos</h2></a>
-            <a href=""><h2>Déconnexion</h2></a>
+            <a href="${urlLogout}"><h2>Déconnexion</h2></a>
             <a href="" class="mediaquery"><h2>Profil</h2></a>
             <div id="dropdownNav">
                 <a href=""><img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"></a>
@@ -55,7 +56,7 @@ abstract class AppView extends AbstractView implements Renderer{
                     <div class="items">
                         <a href="">Profil</a>
                         <a href="">Paramètres</a>
-                        <a href="">Déconnexion</a>
+                        <a href="${urlLogout}">Déconnexion</a>
                     </div>
                 </div>
             </div>
