@@ -34,6 +34,7 @@ abstract class AbstractView {
      * (voir en bas)
      */
     static protected array $style_sheets = []; 
+    static protected array $script_files = []; 
     static protected string $app_title = ""; 
     
 
@@ -75,6 +76,10 @@ abstract class AbstractView {
      */
     static public function addStyle(string $css_files): void {
         self::$style_sheets[] = $css_files;
+    }
+
+    static public function addScript(string $js_files): void {
+        self::$script_files[] = $js_files;
     }
 
     /* Méthode setAppTitle 
@@ -134,17 +139,23 @@ abstract class AbstractView {
         
         $title = self::$app_title;
 
-        /* Lier les feuilles de style */
-
-        $app_root = $this->request->root;
-        $styles = '';
-        foreach ( self::$style_sheets as $file )
-            $styles .= '<link rel="stylesheet" href=".'.$app_root . $file.'"> ';
-
+        
         /* Appeler la méthode makeBody de la sous-classe */
-
         $body = $this->makeBody();
         
+        /* Lier les feuilles de style */
+        $app_root = $this->request->root;
+        
+        $styles = '';
+        foreach ( self::$style_sheets as $file )
+            $styles .= "<link rel=\"stylesheet\" href=\"{$app_root}{$file}\">";
+
+
+        $scripts = '';
+        foreach ( self::$script_files as $file )
+            $scripts .= "<script type=\"module\" src=\"{$app_root}{$file}\"></script>";
+
+
 
         /* Construire la structure de la page 
          * 
@@ -152,7 +163,7 @@ abstract class AbstractView {
          * 
          */
                 
-        $html = <<<EOT
+        $html = <<<BLADE
         <!DOCTYPE html>
         <html lang="fr">
                     
@@ -174,10 +185,10 @@ abstract class AbstractView {
             ${body}
 
 
-            <script type="module" src="/html/js/App.js"></script>
+            ${scripts}
             </body>
         </html>
-        EOT;
+        BLADE;
 
         /* Affichage de la page 
          *
