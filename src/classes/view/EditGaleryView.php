@@ -2,36 +2,85 @@
 
 namespace atelier\view;
 
+use Illuminate\Support\Facades\Blade;
+
 class EditGaleryView extends AppView {
     public function render() : string{
         $urlActionForm = $this->router->urlFor('edit-galery');
         $urlRetour = '';
 
+        $galery = $this->data['galery'];
+        $title = $galery->title;
+        $private = $galery->private;
+        $tags = $galery->tags;
+        $pictures = $galery->pictures;
+        $description = $galery->description;
+
+        if ($private == 1){
+            $checkedPublic = '';
+            $checkedPrivate = 'selected';
+        } else {
+            $checkedPublic = 'selected';
+            $checkedPrivate = '';
+        }
+
+        $stringTag = '';
+        foreach ($tags as $tag){
+            $stringTag .= $tag->name . ', ';
+        }
+        $stringTag = substr($stringTag, 0, -2);
+
+        // A faire : 
+        // - Faire un nouvelle affichage pour gérer les images
+        // - Faire un affichage pour gérer les invitations de membres
+        // - Pour se faciliter la tâche, gérer les requêtes par des formulaires différents
         
+        $htmlPicture = '<div class="already-upload">';
+        foreach ($pictures as $index => $picture){
+            echo('<pre>');
+            var_dump($picture);
+            echo('</pre>');
+            $urlPicture = $picture->name_file;
+            $namePicture = $picture->title;
+
+            $htmlPicture .= <<<BLADE
+            <div class="image-file">
+                <img src="${urlPicture}" alt="Image ${index}">
+                <p title="${namePicture}">${namePicture}</p>
+                <input type="hidden" name="title-image-${index}" value="${namePicture}">
+                <input type="hidden" name="tag-image-${index}" value="">
+
+                <div class="image-actions">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+            </div>
+            BLADE;
+        }
+        $htmlPicture .= '</div>';
 
         AppView::addScript('html/js/Create-Edit_Galery.js');
         
         $html = <<<BLADE
         <article id="CreateGalery">
-            <h2>Création d'une galerie</h2>
+            <h2>Edition d'une galerie</h2>
             
             <form action="${urlActionForm}" method="POST" enctype="multipart/form-data">
                 <div>
                     <div class="group">
                         <div class="form-group">
                             <label for="title">Titre</label>
-                            <input type="text" id="title" name="title" placeholder="Mon voyage en Papouasie..." required>
+                            <input type="text" id="title" name="title" placeholder="Mon voyage en Papouasie..." value="${title}" required>
                         </div>
                         <div class="form-group">
                             <label for="visibilite">Visibilité</label>
                             <select name="visibilite" id="visibilite">
-                                <option value="0" selected>Public</option>
-                                <option value="1">Privé</option>
+                                <option value="0" ${checkedPublic}>Public</option>
+                                <option value="1" ${checkedPrivate}>Privé</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="tags">Tags</label>
-                            <input type="text" id="tags" name="tags" placeholder="Voyage, Tourisme, Papouasie" required>
+                            <input type="text" id="tags" name="tags" placeholder="Voyage, Tourisme, Papouasie" value="${stringTag}" required>
                         </div>
                         <div class="form-group">
                             <label>Ajouter des images</label>
@@ -46,7 +95,7 @@ class EditGaleryView extends AppView {
                             <label for="images-list">Images téléversés</label>
                             <span>(2Mo maximum par image)</span>
                             <div class="images-list">
-                                <p>Aucune image pour le moment...</p>
+                                ${htmlPicture}
                             </div>
                             
         
@@ -85,12 +134,12 @@ class EditGaleryView extends AppView {
                 </div>
 
                 <div class="form-group">
-                    <label for="title">Description</label>
-                    <textarea type="text" id="description" name="description" placeholder="Blablabla" required></textarea>
+                    <label for="description">Description</label>
+                    <textarea type="text" id="description" name="description" placeholder="Blablabla" required>${description}</textarea>
                 </div>
 
                 <div class="list-button">
-                    <button type="submit" disabled>Créer ma galerie</button>
+                    <button type="submit">Modifier la galerie</button>
                     <a href="${urlRetour}">Annuler</a>
                 </div>
             </form>

@@ -85,7 +85,7 @@ class CreateGaleryView extends AppView {
                 </div>
 
                 <div class="form-group">
-                    <label for="title">Description</label>
+                    <label for="description">Description</label>
                     <textarea type="text" id="description" name="description" placeholder="Blablabla" required></textarea>
                 </div>
 

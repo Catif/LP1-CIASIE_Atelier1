@@ -3,15 +3,14 @@
 namespace atelier\control;
 
 use atelier\view as View;
-
+use atelier\router\Router;
 use atelier\modele as Modele;
 
 class EditGaleryController extends AbstractController{
     public function execute() : void {
+        $router = new Router();
         if (isset($_GET['id'])){
             $galery = Modele\Galery::find($_GET['id']);
-
-            
 
             if ($galery->users()->withPivot('role')->where('id_user', $_SESSION['user_profile']['id'])->where('role', 'owner')->orWhere('role', 'contributor')->exists()){
 
@@ -118,16 +117,28 @@ class EditGaleryController extends AbstractController{
                     }
                     View\AppView::setAppTitle("Edition d'une galerie - PhotoMedia");
             
-                    $vue = new View\CreateGaleryView();
+                    $vue = new View\EditGaleryView(['galery' => $galery]);
                     $vue->makePage();
                 } else {
                     echo("Galerie non trouvée");
+
+                    $urlProfile = $router->urlFor('profile');
+                    header('Location: ' . $urlProfile);
+                    die();
                 }
             } else {
                 echo("Vous n'avez pas les droits pour accéder à cette page");
+
+                $urlProfile = $router->urlFor('profile');
+                header('Location: ' . $urlProfile);
+                die();
             }
         } else {
             echo("Aucune galerie sélectionnée");
+
+            $urlProfile = $router->urlFor('profile');
+            header('Location: ' . $urlProfile);
+            die();
         }
     }
       
