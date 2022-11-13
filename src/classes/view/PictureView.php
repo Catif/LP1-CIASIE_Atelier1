@@ -34,15 +34,24 @@ class PictureView extends AppView {
         <div id="comments">
             <div id="comments-header">
                 <h2>Commentaires</h2>
-                <a>Ajouter un commentaire</a>
+                <a id="addCommentBtn">Ajouter un commentaire</a>
             </div>
             <div id="comments-list">
+                <div id="newComment">
+                    <form method="POST">
+                        <div>
+                            <label>Message</label>
+                            <textarea></textarea>
+                        </div>
+                        <button type="submit">Ajouter</button>
+                    </form>
+                </div>
                 <div class="comment">
                     <div>
                         <div class="author-pfp"><img src=""></div>
                         <p class="author-name">John_doe13</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium pellentesque ipsum a elementum. In hac habitasse platea dictumst. Duis urna est, pellentesque a lacinia a, porta in quam. Suspendisse at malesuada libero.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium pellentesque ipsum a elementum.</p>
                 </div>
                 <div class="comment">
                     <div>
