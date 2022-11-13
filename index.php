@@ -24,6 +24,7 @@ $router = new atelier\router\Router();
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('about', 'about', 'atelier\control\AboutController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
+$router->addRoute('logout', 'logout', 'atelier\control\LogoutController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
