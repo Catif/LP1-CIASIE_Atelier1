@@ -1,9 +1,9 @@
 #newComment{
     width: 100%;
-    max-width: 1500px ;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1500px;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
     gap: 25px 0px;
     background-color: $color-input;
     color: $color-contrastBlack;
@@ -14,17 +14,26 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 25px 0px;
 
         div{
             width: 100%;
+            max-width: 100%;
             display: flex;
             flex-direction: column;
-            max-width: 100%;
+            gap: 15px 0px;
 
             textarea{
-                background-color: aquamarine;
-                height: 50px;
+                background-color: $color-contrastWhite;
+                height: 125px;
+                resize: vertical;
+                border: 2px solid $color-contrastBlack;
+                border-radius: 4px;
+
+                &:focus{
+                    outline: 0;
+                }
             }
         }
 

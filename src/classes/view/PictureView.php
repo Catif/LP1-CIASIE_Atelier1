@@ -41,9 +41,9 @@ class PictureView extends AppView {
                     <form method="POST">
                         <div>
                             <label>Message</label>
-                            <textarea></textarea>
+                            <textarea name="message" autofocus maxlength="65000" required></textarea>
                         </div>
-                        <button type="submit">Ajouter</button>
+                        <button type="submit">Envoyer</button>
                     </form>
                 </div>
                 <div class="comment">
