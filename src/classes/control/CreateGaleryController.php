@@ -10,12 +10,6 @@ class CreateGaleryController extends AbstractController{
     public function execute() : void {
         
         if (!empty($_FILES)){
-            echo("<pre>");
-            var_dump($_FILES);
-            echo('<br>');
-            var_dump($_POST);
-            echo("</pre>");
-
             $tabImages = $_FILES['images'];
             $numberImages = count($tabImages['name']);
 
@@ -44,17 +38,20 @@ class CreateGaleryController extends AbstractController{
 
                 $userId = $_SESSION['user_profile']['id'];
                                 
-                $destination = 'html/img/users/' . $userId .'/';
+                $destination = 'html/img/users/';
                 if (!is_dir($destination)){
                     mkdir($destination);
                 }
-                if (!is_dir($destination . 'galeries/')){
-                    mkdir($destination . 'galeries/');
+                if (!is_dir($destination . $userId .'/')){
+                    mkdir($destination . $userId .'/');
                 }
-                if (!is_dir($destination . 'galeries/' . $galerie->id)){
-                    mkdir($destination . 'galeries/' . $galerie->id);
+                if (!is_dir($destination . $userId .'/' . 'galeries/')){
+                    mkdir($destination . $userId .'/' . 'galeries/');
                 }
-                $destination = $destination . 'galeries/' . $galerie->id . '/';
+                if (!is_dir($destination . $userId .'/' . 'galeries/' . $galerie->id)){
+                    mkdir($destination . $userId .'/' . 'galeries/' . $galerie->id);
+                }
+                $destination = $destination . $userId .'/' . 'galeries/' . $galerie->id . '/';
 
                 for($i = 0; $i < $numberImages; $i++){
                     $image = $tabImages['name'][$i];
@@ -80,7 +77,7 @@ class CreateGaleryController extends AbstractController{
                                 $picture->save();
                                 $galerie->pictures()->save($picture);
                                 
-                                if (!empty($_POST['tags-image-' . $i])){
+                                if (!empty($_POST['tag-image-' . $i])){
                                     $listTags = explode(',', $_POST['tag-image-' . $i]);
                                     foreach($listTags as $tag){
                                         $tag = trim($tag);
@@ -106,13 +103,14 @@ class CreateGaleryController extends AbstractController{
                     
                 }
 
-                $user = Modele\User::find($_SESSION['user_profile']['id']);
-                $user->galeries()->attach($galerie);
+                $user = Modele\User::find($userId);
+                $user->galeries()->save($galerie, ['role' => 'owner']);
             }
         }
 
 
         View\AppView::setAppTitle("Création d'une galerie - PhotoMedia");
+        
         $vue = new View\CreateGaleryView();
         $vue->makePage();
     }

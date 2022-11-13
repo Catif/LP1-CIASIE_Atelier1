@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 11 nov. 2022 à 16:46
+-- Généré le : dim. 13 nov. 2022 à 12:59
 -- Version du serveur : 8.0.27
 -- Version de PHP : 7.4.26
 
@@ -48,7 +48,6 @@ DROP TABLE IF EXISTS `galery`;
 CREATE TABLE IF NOT EXISTS `galery` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `tags` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `description` text,
   `private` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -126,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `picture_tag` (
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tag` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -145,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `level` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 

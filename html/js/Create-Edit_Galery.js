@@ -34,6 +34,7 @@ function moreThan2mb(file){
 // ===========================
 function addImages(tab){
     imagesListEl.innerHTML = ""
+    tabFile = []
 
     let tabPictureUpload = Array.from(tab)
     buttonSubmit.disabled = true;
@@ -71,6 +72,7 @@ function addImage(image){
     div.classList.add('image-file')
     div.id = 'file-' + rang
     div.innerHTML = `
+        <img src="${URL.createObjectURL(image)}" alt="Image ${rang + 1}">
         <p title="${image.name}">${image.name}</p>
         <input type="hidden" name="title-image-${rang}" value="${image.name}">
         <input type="hidden" name="tag-image-${rang}" value="">
