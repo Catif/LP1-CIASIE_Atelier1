@@ -36,6 +36,7 @@ $router->addRoute('about', 'about', 'atelier\control\AboutController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
 $router->addRoute('logout', 'logout', 'atelier\control\LogoutController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
+$router->addRoute('picture', 'picture', 'atelier\control\PictureController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);

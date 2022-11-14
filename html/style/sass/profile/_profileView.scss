@@ -1,0 +1,19 @@
+#profile{
+    display: flex;
+    flex-direction: column;
+    gap: 25px 0px;
+}
+
+#galery-list{
+    overflow-x: scroll;
+    padding: 10px;
+    
+    display: flex;
+    gap: 20px;
+    
+    div{
+        min-width: 150px;
+        height: 150px;
+        background-color: blue;
+    }
+}
