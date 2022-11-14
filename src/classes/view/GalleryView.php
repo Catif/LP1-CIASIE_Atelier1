@@ -43,7 +43,7 @@ class GalleryView extends AppView {
         $dateGallery = date('d/m/Y', strtotime($dateGallery));
 
         $idGallery = $gallery->id;
-
+        
         $urlHere = $this->router->urlFor('view-gallery');
 
         $htmlPagination = "";
