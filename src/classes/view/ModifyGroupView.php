@@ -2,15 +2,18 @@
 
 namespace atelier\view;
 
-class ModifyGroupView extends AppView{
-    public function render(): string{
-        $urlActionForm = $this->router->urlFor('create-group');
+class ModifyGroupView extends AppView
+{
+    public function render(): string
+    {
+        $urlActionForm = $this->router->urlFor('modify-group', [['id', $this->data->id]]);
         $urlRetour = '';
+        $titleGroup = $this->data->name;
 
         $html = <<<EOF
         <div id="ModifyGroup">
 
-        
+            
             <div class="header">
             <h2>Modifier le groupe</h2>
             <button class="DeleteButton">Supprimer le groupe</button>
@@ -21,7 +24,7 @@ class ModifyGroupView extends AppView{
             <div class="formul">
                 <div class="form-nameGroup">
                     <label for="name">Nom de groupe  </label>
-                    <input type="text" name="name" id="nameGroup" placeholder="Nom du groupe" required>
+                    <input type="text" name="name" id="nameGroup" placeholder="Nom du groupe" value="${titleGroup}" required>
                 </div>
 
                 <div class="memberRole">
@@ -29,7 +32,7 @@ class ModifyGroupView extends AppView{
                 <div class="form-role">    
                     <label for="role">Role</label>
                     <select name="role" id="role">
-                        <option value="0" selected>Visité</option>
+                        <option value="0" selected>Invité</option>
                         <option value="1">Contributeur</option>
                     </select>
                  </div>
