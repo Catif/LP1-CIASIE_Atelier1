@@ -51,8 +51,8 @@ class EditGaleryView extends AppView {
 
     private function createFormAddNewPicture($galery){
         $urlActionForm = $this->router->urlFor('edit-galery', [['id', $galery->id]]);
-        $urlRetour = '';
-
+        $urlRetour = $this->router->urlFor('view-gallery', [['id', $galery->id]]);
+        
         $title = $galery->title;
         $private = $galery->private;
         $description = $galery->description;

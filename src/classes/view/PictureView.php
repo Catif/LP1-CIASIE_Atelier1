@@ -22,8 +22,8 @@ class PictureView extends AppView {
         $galerie = $picture->galerie()->first();
         $author = $galerie->users()->withPivot('role')->where('role', 'owner')->first()->username;
 
-        // Attendre page de Mehdi pour mettre le lien vers la galerie
-        $urlGalerie = ''; //$this->router->urlFor('view-gallery', ['id' => $galerie->galerie_id])
+        
+        $urlGalerie = $this->router->urlFor('view-gallery', [['id', $galerie->id]]);
 
         $size = [0, 0];
         if (is_file($srcPicture)){
