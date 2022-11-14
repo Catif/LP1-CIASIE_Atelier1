@@ -59,7 +59,20 @@ class GalleryView extends AppView {
             }
         }
         
+        $urlEditGallery= $this->router->urlFor('edit-galery', [['id', $idGallery]]);
+        $htmlEditGallery = '';
+        if (isset($_SESSION['user_profile'])){
+            
+            $user = $gallery->users()->withPivot('role')->where('role', 'owner')->orWhere('role', 'colaborator')->first();
+            if ($user){
+                $htmlEditGallery = <<<BLADE
+                <a href="${urlEditGallery}">Editer la galerie</a>
+                BLADE;
+            }
+        }
+
         $html = <<<BLADE
+        ${htmlEditGallery}
         <div class="info">
             <p>Titre : ${titleGallery}</p>
             <p>Auteur : ${nameUserGallery}</p>
