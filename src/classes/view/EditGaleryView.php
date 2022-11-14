@@ -8,13 +8,6 @@ class EditGaleryView extends AppView {
     public function render() : string{
         $galery = $this->data['galery'];
 
-        // A faire : 
-        // - Faire un nouvelle affichage pour gérer les images
-        // - Faire un affichage pour gérer les invitations de membres
-        // - Pour se faciliter la tâche, gérer les requêtes par des formulaires différents
-        
-        
-
         AppView::addScript('html/js/Create-Edit_Galery.js');
         AppView::addScript('html/js/Edit-Galery.js');
 
@@ -100,7 +93,7 @@ class EditGaleryView extends AppView {
                         <label>Ajouter des images</label>
     
                         <label for="imagesUpload"><i class="bi bi-upload"></i></label>
-                        <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/png, image/gif, image/jpg, image/jpeg, image/webp" required>
+                        <input type="file" id="imagesUpload" name="images[]" multiple="multiple" accept="image/png, image/gif, image/jpg, image/jpeg, image/webp">
                     </div>
                 </div>
 
@@ -150,7 +143,7 @@ class EditGaleryView extends AppView {
             </div>
 
             <div class="list-button">
-                <button type="submit" name="actionForm" name="editGalery">Modifier la galerie</button>
+                <button type="submit" name="actionForm" value="editGalery">Modifier la galerie</button>
                 <a href="${urlRetour}">Annuler</a>
             </div>
         </form>
@@ -235,7 +228,7 @@ class EditGaleryView extends AppView {
 
                             <div class="footer">
                                 <input type="hidden" name="MODAL-id-image" value="">
-                                <button type="submit" dataModal="valider" name="editOldPicture" value="1">Valider</button>
+                                <button type="submit" dataModal="valider" name="actionForm" value="editOldPicture">Valider</button>
                                 <button type="button" dataModal="annuler">Annuler</button>
                             </div>
                         </div>
