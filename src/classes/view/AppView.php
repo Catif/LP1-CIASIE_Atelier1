@@ -39,6 +39,7 @@ abstract class AppView extends AbstractView implements Renderer{
     protected function makeNavbar(): string {
         $navItems = "";
 
+        $urlHome = $this->router->urlFor('home');
         $urlAbout = $this->router->urlFor('about');
 
         if (Authentification::connectedUser()) {
@@ -76,7 +77,7 @@ abstract class AppView extends AbstractView implements Renderer{
 
         return <<<BLADE
         <nav>
-            <h3>PhotoMedia</h3>
+            <a href="${urlHome}"><h3>PhotoMedia</h3></a>
             
             <div class="top">
                 <form action="" method="GET" class="search">
@@ -96,7 +97,7 @@ abstract class AppView extends AbstractView implements Renderer{
             <i class="bi bi-list"></i>
 
             <div class="list-items">
-                <a href=""><h2>Accueil</h2></a>
+                <a href="${urlHome}"><h2>Accueil</h2></a>
                 ${navItems}
             </div>
 

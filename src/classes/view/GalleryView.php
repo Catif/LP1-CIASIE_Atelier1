@@ -5,48 +5,87 @@ namespace atelier\view;
 class GalleryView extends AppView {
     public function render() : string{
         $gallery = $this->data;
-        $user = $gallery->users()->withPivot('role')->where('role', 'owner')->first();   
-        $pics = \atelier\modele\Picture::where('id_galery', '=', $this->request->get['id'])->get();
-        $number = $pics->count();
-        
-        
-        $html = <<<EOF
-            <div class="info">
-                <p>Titre :{$gallery->title}</p>
-                <p>Auteur :{$user->username}</p>
-                <p>Date de création :{$gallery->created_at}</p>
-            </div>
+        $number = $gallery->pictures()->count();
+        $htmlPicture = "";
 
-            <div class="container">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div>7</div>
-                <div>8</div>
-                <div>10</div>
-                <div>11</div>
-                <div>12</div>
-                <div>13</div>
-                <div>14</div>
-                <div>15</div>
-                <div>16</div>
-                <div>17</div>
-                <div>18</div>
-                <div>19</div>
-                <div>20</div>
-                <div>21</div>
-                <div>22</div>
-            </div>
+        $page = 1;
+        $numberPicturePerPage = 22;
+        if (isset($_GET['page'])){
+            $page = $_GET['page'];
+        }
+        
+        $pics = $gallery->pictures()->skip(($page-1)*$numberPicturePerPage)->take($numberPicturePerPage)->get();
 
-            <div class="info-comp">
-                <p>Tags :{$gallery->tags}</p>
-                <div></div>
-                <p>Nombre :{$number}</p>
+        foreach($pics as $p){
+            $urlPic = $this->router->urlFor('picture', [['id',$p->id]]);
+            $srcImg = $p->name_file;
+            $titleImg = $p->title;
+
+            $htmlPicture .= <<<BLADE
+            <a href="${urlPic}">
+                <img src="${srcImg}">
+                <span>${titleImg}</span>
+            </a>
+            BLADE;
+        }
+        $tags = \atelier\modele\Tag::where('id', '=', $this->request->get['id'])->get();
+        $htmlTag = '';
+
+        foreach($tags as $tag){
+            $htmlTag.= $tag->name . ', ';
+        }
+        
+        $titleGallery = $gallery->title;
+        $userGallery = $gallery->users()->withPivot('role')->where('role', 'owner')->first();
+        $nameUserGallery = $userGallery->username;
+        
+        $dateGallery = $gallery->created_at;
+        $dateGallery = date('d/m/Y', strtotime($dateGallery));
+
+        $idGallery = $gallery->id;
+
+        $urlHere = $this->router->urlFor('view-gallery');
+
+        $htmlPagination = "";
+        for ($i = 1; $i <= ceil($number/$numberPicturePerPage); $i++) {
+            if (isset($_GET['page'])){
+                $htmlPagination .= <<<BLADE
+                <option value="${i}" selected>${i}</option>
+                BLADE;
+            } else {
+                $htmlPagination .= <<<BLADE
+                <option value="${i}">${i}</option>
+                BLADE;
+            }
+        }
+        
+        $html = <<<BLADE
+        <div class="info">
+            <p>Titre : ${titleGallery}</p>
+            <p>Auteur : ${nameUserGallery}</p>
+            <p>Date de création : ${dateGallery}</p>
+            <p>Tags : ${htmlTag}</p>
+            <p>Nombre d'images : ${number}</p>
+        </div>
+
+        <div class="container">
+            ${htmlPicture}
+        </div>
+
+        <div class="info-comp">
+            
+            <div>
+                <form action="${urlHere}" method="get">
+                    <input type="hidden" name="action" value="view-gallery">
+                    <input type="hidden" name="id" value="${idGallery}">
+                    <select name="page" onChange="this.form.submit()">
+                        ${htmlPagination}
+                    </select>
+                </form>
             </div>
-        EOF;
+            
+        </div>
+        BLADE;
 
         return $html;
     }

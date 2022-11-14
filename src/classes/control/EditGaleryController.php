@@ -8,8 +8,7 @@ use atelier\modele as Modele;
 
 class EditGaleryController extends AbstractController
 {
-    public function execute(): void
-    {
+    public function execute(): void {
         $router = new Router();
 
         if (isset($_GET['id'])) {
