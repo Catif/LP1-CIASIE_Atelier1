@@ -22,20 +22,10 @@ class GalleryView extends AppView {
         $tags = \atelier\modele\Tag::where('id', '=', $this->request->get['id'])->get();
         $htmlTag = '';
 
-
-
-        /*
-        foreach($pics as $p){
-            $r = new \atelier\router\Router();
-            $url_pic = $r->urlFor();
-        }
-        */
-
         foreach($tags as $tag){
             $htmlTag.= $tag->name . ', ';
         }
         
-        var_dump($tags);
         $html = <<<EOF
 
             <div class="info">
@@ -45,7 +35,7 @@ class GalleryView extends AppView {
             </div>
 
             <div class="container">
-
+                ${htmlPicture}
             </div>
 
             <div class="info-comp">
