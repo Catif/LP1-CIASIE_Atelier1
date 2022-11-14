@@ -42,9 +42,10 @@ nav {
         }
     }
     
-    &>i{
+    i{
         color: $color-contrastWhite;
         font-size: 20px;
+        cursor: pointer;
     }
 
     .top{display: none;}
@@ -70,7 +71,7 @@ nav {
             gap: 30px;
             h2{
                 font-size: 18px;
-                font-weight: 500px;
+                font-weight: 500;
 
                 &#login{
                     @include buttonLight(150px);
