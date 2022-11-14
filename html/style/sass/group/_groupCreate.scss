@@ -1,0 +1,149 @@
+#CreateGroup{
+
+    .CreateButton{
+        @include buttonPrimary(220px);
+        margin-top: 22px;
+    }
+    .CancelButton{
+        @include buttonInput(220px);
+        display: flex;
+        margin-top: 8px;
+    }
+    
+    
+    #nameGroup{
+        height: 30px;
+        display: flex;
+        margin-top: 10px;
+    }
+    
+    .form-nameGroup{
+        margin-top: 18px;
+        
+    }
+    
+    #memberEmail{
+        height: 30px;
+        display: flex;
+        margin-top: 10px;
+        
+    }
+    
+    .form-nameMember{
+        margin-top: 25px;
+        
+    }
+    
+    
+    .form-CreateGroup{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    
+    }
+    
+    .formul{
+        margin: auto;
+    }
+
+
+    .form-CreateGroup input {
+        width: 219px;
+    }
+    
+    .buttons{
+        margin-top: 10px;
+        margin: auto;
+    }
+    
+
+    #info{
+        margin-bottom: 20px;
+    }
+    
+   h2, h3{
+        text-align: center;
+   } 
+
+   .form-role label{
+        margin-top: 25px;
+        margin-bottom: 10px;
+   }
+
+   .form-role{
+    display: flex;
+    flex-direction: column;
+
+   }
+    
+    @media (min-width:1000px){
+        .formul{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 25px;
+            width: 100%;
+
+        }
+    
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+        }
+        
+        .CancelButton{
+            // margin-top: 12px;
+            margin-left: 30px;
+            margin-top: 0;
+        }
+    
+        .form-nameGroup{
+            width: 50%;
+            margin-right: 30px;
+        }
+    
+        .form-nameMember{
+            width: 50%;
+            margin-left: 15px;
+        }
+    
+        h3{
+            font-weight: bold;
+        }
+    
+        h2{
+            margin-bottom: 50px;
+        }
+    
+        .form-CreateGroup{
+            // display: flex;
+            align-items: center;
+            width: 500px;
+        }
+    
+        .header{
+            // margin-left: 100px;
+            display: flex;
+            flex-direction: row;
+        }
+    
+        .CreateButton{
+            width: 150px;
+            margin-top: 0;
+        }
+    
+    
+        .CancelButton{
+            width: 150px;
+        }
+
+        .memberRole{
+            display: flex;
+            flex-direction: row;
+        }
+
+        #role{
+            width: 220px;
+        }
+    } 
+}

@@ -31,11 +31,15 @@ atelier\view\AppView::addScript('html/js/App.js');
 $router = new atelier\router\Router();
 
 /* Ajout des routes de l'application */
+
+
 $router->addRoute('home', 'home', 'atelier\control\HomeController');
 $router->addRoute('about', 'about', 'atelier\control\AboutController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
 $router->addRoute('logout', 'logout', 'atelier\control\LogoutController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
+$router->addRoute('create-group', 'create-group', 'atelier\control\CreateGroupController');
+$router->addRoute('modify-group', 'modify-group', 'atelier\control\modifyGroupController');
 $router->addRoute('picture', 'picture', 'atelier\control\PictureController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
