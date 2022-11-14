@@ -87,7 +87,7 @@ p, textarea {
   font-weight: 400;
 }
 
-input, select, button {
+input, select, button, textarea {
   border: none;
   border-radius: 4px;
   height: 30px;
@@ -100,13 +100,6 @@ input {
   font-weight: 400;
   width: 190px;
   color: #0B162C;
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 20px;
 }
 
 nav {
@@ -282,6 +275,7 @@ nav.active {
   background-color: #0B162C;
   display: flex;
   flex-direction: column;
+  z-index: 9999;
 }
 nav.active > i[class="bi bi-list"] {
   display: none;
@@ -394,7 +388,6 @@ nav.active .list-items h2 {
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
-  justify-content: center;
   gap: 1em;
 }
 
@@ -423,13 +416,12 @@ nav.active .list-items h2 {
   margin-top: 1em;
 }
 
-.about div > *:not(a) {
+.about div > * {
   width: 100%;
 }
 
 @media screen and (min-width: 500px) {
   .about div {
-    flex-direction: column;
     gap: 2em;
   }
   .about div div {
@@ -566,6 +558,364 @@ nav.active .list-items h2 {
     width: 100%;
   }
 }
+body.no-scroll {
+  overflow: hidden;
+}
+
+article {
+  width: 100%;
+}
+article #CreateGalery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+article #CreateGalery form {
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+article #CreateGalery form > div:first-child {
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  article #CreateGalery form > div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+  }
+  article #CreateGalery form > div:first-child .group {
+    width: 100%;
+    max-width: 50%;
+  }
+  article #CreateGalery form > div:first-child .images-list {
+    background-color: #0B162C;
+    border-radius: 4px;
+    max-height: 221px;
+    overflow-y: auto;
+    padding: 10px 15px;
+    color: #F4F4F4;
+  }
+  article #CreateGalery form > div:first-child .images-list .image-file {
+    color: #0B162C;
+    height: 50px;
+  }
+  article #CreateGalery form > div:first-child .images-list .image-file img {
+    display: block;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  article #CreateGalery form > div:first-child .modal.active .card .body img {
+    display: block;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: scale-down;
+    border-radius: 4px;
+  }
+}
+article #CreateGalery form > div:first-child .group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+article #CreateGalery form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+article #CreateGalery form .form-group select {
+  background-color: #D9D9D9;
+  color: #0B162C;
+  padding-left: 10px;
+}
+article #CreateGalery form .form-group input {
+  width: 100%;
+}
+article #CreateGalery form .form-group input[type=file] {
+  display: none;
+}
+article #CreateGalery form .form-group label[for=imagesUpload] {
+  height: 35px;
+  background: #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 25px;
+}
+article #CreateGalery form .form-group label[for=imagesUpload]:hover {
+  background-color: #0B162C;
+  color: #F4F4F4;
+}
+article #CreateGalery form .form-group label[for=images-list] ~ span {
+  font-size: 12px;
+}
+article #CreateGalery form .form-group .images-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+article #CreateGalery form .form-group .images-list > p {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+article #CreateGalery form .form-group .images-list .image-file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  width: 100%;
+  height: 30px;
+  background: #D9D9D9;
+  border-radius: 4px;
+  gap: 10px;
+}
+article #CreateGalery form .form-group .images-list .image-file img {
+  display: none;
+}
+article #CreateGalery form .form-group .images-list .image-file p {
+  flex-grow: 1;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+article #CreateGalery form .form-group .images-list .image-file .image-actions {
+  width: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+article #CreateGalery form .form-group .images-list .image-file .image-actions i {
+  font-size: 18px;
+  cursor: pointer;
+}
+article #CreateGalery form .form-group .images-list .image-file .image-actions i:nth-child(1) {
+  color: #0B162C;
+}
+article #CreateGalery form .form-group .images-list .image-file .image-actions i:nth-child(2) {
+  color: #BF4040;
+}
+article #CreateGalery form .form-group textarea {
+  height: 90px;
+  background: #D9D9D9;
+  padding: 10px;
+  font-size: 14px;
+}
+article #CreateGalery form .list-button {
+  width: 100%;
+}
+article #CreateGalery form .list-button button {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #0B162C;
+  color: #F4F4F4;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+article #CreateGalery form .list-button button[disabled] {
+  opacity: 40%;
+  color: #c1c1c1;
+  cursor: not-allowed;
+}
+article #CreateGalery form .list-button a {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #D9D9D9;
+  color: #0B162C;
+}
+article #CreateGalery form .modal {
+  display: none;
+}
+article #CreateGalery form .modal.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 22, 44, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+article #CreateGalery form .modal.active .card {
+  width: 95%;
+  max-width: 640px;
+  background-color: #F4F4F4;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+article #CreateGalery form .modal.active .card .header {
+  width: 100%;
+}
+article #CreateGalery form .modal.active .card .header hr {
+  border-top: none;
+  border-width: 1px;
+  color: #0B162C;
+}
+article #CreateGalery form .modal.active .card .body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 20px;
+  width: 85%;
+}
+article #CreateGalery form .modal.active .card .body img {
+  display: none;
+}
+article #CreateGalery form .modal.active .card .body .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+article #CreateGalery form .modal.active .card .body .form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+article #CreateGalery form .modal.active .card .body .form .form-group label {
+  font-size: 14px;
+}
+article #CreateGalery form .modal.active .card .body .form .form-group input {
+  height: 35px;
+  background: #D9D9D9;
+  padding: 10px;
+  font-size: 14px;
+}
+article #CreateGalery form .modal.active .card .body .footer {
+  display: flex;
+  justify-content: flex-end;
+}
+article #CreateGalery form .modal.active .card .body .footer button[dataModal=valider] {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #0B162C;
+  color: #F4F4F4;
+}
+article #CreateGalery form .modal.active .card .body .footer button[dataModal=annuler] {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #D9D9D9;
+  color: #0B162C;
+}
+
+#CreateGalery.formatEdit h2 {
+  margin-top: 60px;
+}
+#CreateGalery.formatEdit h2:first-child {
+  margin-top: 0;
+}
+#CreateGalery.formatEdit form.oldPicture .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+#CreateGalery.formatEdit form.oldPicture .form-group button[type=submit] {
+  height: auto;
+  background-color: transparent;
+  padding: 0 4px;
+}
+#CreateGalery.formatEdit form.oldPicture .form-group button[type=submit] i[class="bi bi-x-lg"] {
+  color: #BF4040;
+}
+#CreateGalery.formatEdit div.ManageMember {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+#CreateGalery.formatEdit div.ManageMember > div {
+  margin-top: 20px;
+  flex-grow: 1;
+}
+#CreateGalery.formatEdit div.ManageMember > div h3 {
+  text-align: center;
+}
+#CreateGalery.formatEdit div.ManageMember > div .box {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+#CreateGalery.formatEdit div.ManageMember > div .box form {
+  display: flex;
+  flex-direction: row;
+  background-color: #D9D9D9;
+  justify-content: space-between;
+  height: 30px;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 4px;
+  margin-top: 0;
+}
+#CreateGalery.formatEdit div.ManageMember > div .box form button[type=submit] {
+  height: auto;
+  background-color: transparent;
+  padding: 0 4px;
+}
+#CreateGalery.formatEdit div.ManageMember > div .box form button[type=submit] i {
+  font-size: 18px;
+  color: #0B162C;
+  cursor: pointer;
+}
+#CreateGalery.formatEdit div.ManageMember > div .box form button[type=submit] i[class="bi bi-x-lg"] {
+  color: #BF4040;
+}
+
 #picture {
   z-index: 0;
   padding: 20px;
