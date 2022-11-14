@@ -9,10 +9,10 @@ class Faker{
         $this->url = $url;
     }
     public function getImage(){
-        $id = rand(0,1084);
+        $id = rand(0,5000);
         $width = rand(720,3840);
         $height = rand(720,2160);
 
-        return $this->url . "id/" . $id . "/" . $width . "/" . $height;
+        return $this->url . "seed/" . $id . "/" . $width . "/" . $height;
     }
 }
