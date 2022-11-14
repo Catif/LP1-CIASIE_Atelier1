@@ -9,6 +9,7 @@ use atelier\modele as Modele;
 class EditGaleryController extends AbstractController{
     public function execute() : void {
         $router = new Router();
+        
         if (isset($_GET['id'])){
             $galery = Modele\Galery::find($_GET['id']);
 
@@ -114,7 +115,41 @@ class EditGaleryController extends AbstractController{
                             $user = Modele\User::find($userId);
                             $user->galeries()->save($galerie, ['role' => 'owner']);
                         }
+                    } else if (!empty($_POST)){
+                        if (isset($_POST['addMember'])){
+                            if(isset($_POST['email'], $_POST['typeMember'])){
+                                if ($_POST['typeMember'] == 'guest' || $_POST['typeMember'] == 'contributor'){
+                                    $user = Modele\User::where('email', $_POST['email'])->first();
+                                    if ($user){
+                                        if ($user->galeries()->withPivot('role')->where('id_galery', $galery->id)->exists()){
+                                            echo("L'utilisateur est déjà membre de la galerie");
+                                        } else {
+                                            $user->galeries()->save($galery, ['role' => $_POST['typeMember']]);
+                                            echo("L'utilisateur a été ajouté à la galerie");
+                                        }
+                                    }
+                                }
+
+                            } 
+                        } else if ($_POST['action'] == 'deleteMember'){
+                            $user = Modele\User::where('email', $_POST['email'])->first();
+                            if ($user){
+                                $galery->users()->detach($user);
+                            }
+                        } else if ($_POST['action'] == 'deletePicture'){
+                            $picture = Modele\Picture::find($_POST['id']);
+                            if ($picture){
+                                $picture->delete();
+                            }
+                        } else if ($_POST['action'] == 'deleteGalery'){
+                            $galery->delete();
+                        }
                     }
+
+
+
+
+                        
                     View\AppView::setAppTitle("Edition d'une galerie - PhotoMedia");
             
                     $vue = new View\EditGaleryView(['galery' => $galery]);
