@@ -4,9 +4,19 @@ namespace atelier\view;
 
 class PictureView extends AppView {
     public function render() : string{
-        $html = <<<BLADE
+        $picture = $this->data;
+        $srcPicture = $picture->name_file;
+
+
+        $html = <<<EOT
         <div id="picture-header">
-            <img id="pic" src="https://picsum.photos/1280/720" alt="image">
+            <img id="pic" src="
+        EOT;
+
+        $html .= $srcPicture;
+
+        $html .= <<<EOF
+        ${srcPicture}" alt="image">
             <div id="picture-infos">
                 <div>
                     <h2>Titre</h2>
@@ -62,7 +72,7 @@ class PictureView extends AppView {
                 </div>
             </div>
         </div>
-        BLADE;
+        EOT;
 
         return $html;
     }
