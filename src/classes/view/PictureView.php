@@ -1,32 +1,59 @@
 <?php
 
 namespace atelier\view;
+use atelier\modele as Modele;
 
 class PictureView extends AppView {
     public function render() : string{
+        $picture = Modele\Picture::find($_GET['id']);
+        $srcPicture = $picture->name_file;
+
+        $titlePicture = $picture->title;
+        $tagsPicture = $picture->tags;
+
+        $htmlTags = '';
+        foreach ($tagsPicture as $tag){
+            $htmlTags .= "{$tag->name} ";
+        }
+
+        $datePicture = $picture->created_at;
+        $datePicture = date('d/m/Y', strtotime($datePicture));
+        
+        $galerie = $picture->galerie()->first();
+        $author = $galerie->users()->withPivot('role')->where('role', 'owner')->first()->username;
+
+        // Attendre page de Mehdi pour mettre le lien vers la galerie
+        $urlGalerie = ''; //$this->router->urlFor('view-gallery', ['id' => $galerie->galerie_id])
+
+        $size = [0, 0];
+        if (is_file($srcPicture)){
+            $size = getimagesize($srcPicture);
+        }
+
         $html = <<<BLADE
+        <a href="${urlGalerie}" class="button">Revenir à la galerie</a>
         <div id="picture-header">
-            <img id="pic" src="https://picsum.photos/1280/720" alt="image">
+            <img id="pic" src="${srcPicture}" alt="image">
             <div id="picture-infos">
                 <div>
                     <h2>Titre</h2>
-                    <p>Photo abstraite</p>
+                    <p>${titlePicture}</p>
                 </div>
                 <div>
                     <h2>Auteur</h2>
-                    <p>John Doe</p>
+                    <p>${author}</p>
                 </div>
                 <div>
                     <h2>Date d'ajout</h2>
-                    <p>09/11/2022</p>
+                    <p>${datePicture}</p>
                 </div>
                 <div>
                     <h2>Tags</h2>
-                    <p>Art Abstrait Photographie</p>
+                    <p>${htmlTags}</p>
                 </div>
                 <div>
                     <h2>Données techniques</h2>
-                    <p>1280 x 720, JPEG, Paris</p>
+                    <p>${size[0]} x ${size[1]}, JPEG, Paris</p>
                 </div>
             </div>
         </div>
