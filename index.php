@@ -39,6 +39,7 @@ $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);
+$router->addRoute('edit-galery', 'edit-galery', 'atelier\control\EditGaleryController', Authentification::ACCESS_LEVEL_USER);
 
 
 /* Route par défaut */
