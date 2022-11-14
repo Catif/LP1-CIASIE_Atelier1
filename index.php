@@ -29,7 +29,7 @@ $router->addRoute('register', 'register', 'atelier\control\RegisterController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);
-
+$router->addRoute('view-gallery', 'view-gallery', 'atelier\control\GalleryController');
 
 /* Route par défaut */
 $router->setDefaultRoute('home');
