@@ -26,15 +26,15 @@ class CreateGroupView extends AppView
 
                 <div class="form-role">    
                     <label for="role">Role</label>
-                    <select name="Role" id="role">
+                    <select name="role" id="role">
                         <option value="0" selected>Visité</option>
                         <option value="1">Contributeur</option>
                     </select>
                  </div>
 
                 <div class="form-nameMember">
-                    <label for="name">Nom des membres  </label>
-                    <input type="text" name="member" id="memberName" placeholder="Pseudonyme" required>
+                    <label for="name">Email des membres  </label>
+                    <input type="email" name="member" id="memberEmail" placeholder="Email du membre" required>
                 </div>
                     
                  </div> 

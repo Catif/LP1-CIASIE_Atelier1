@@ -2,8 +2,7 @@
 
 namespace atelier\view;
 
-class ModifyGroupView extends AppView
-{
+class ModifyGroupView extends AppView{
     public function render(): string{
         $urlActionForm = $this->router->urlFor('create-group');
         $urlRetour = '';
@@ -36,8 +35,8 @@ class ModifyGroupView extends AppView
                  </div>
 
                 <div class="form-nameMember">
-                    <label for="name">Nom des membres  </label>
-                    <input type="text" name="member" id="memberName" placeholder="Pseudonyme" required>
+                    <label for="name">Email des membres  </label>
+                    <input type="email" name="member" id="memberEmail" placeholder="Email du membre" required>
                 </div>
                     
                  </div> 
@@ -58,22 +57,3 @@ class ModifyGroupView extends AppView
         return $html;
     }
 }
-//  <form action="" method="get" class="form-Group">
-//                 <div class="formul">
-//                     <div class="form-nameGroup">
-//                         <label for="name">Nom de groupe  </label>
-                        
-//                         <input type="text" name="name" id="nameGroup" required>
-//                     </div>
-//                     <div class="form-nameMember">
-//                         <label for="name">Membres  </label>
-
-//                         <input type="text" name="member" id="memberName" required>
-//                     </div>
-//                 </div>  
-//                 <div class="buttons">
-//                     <button class="SaveButton">Sauvgarder</button>
-//                     <button class="CancelButton">Annuler</button>
-//                 </div>
-//             </form>
-//         </div>
