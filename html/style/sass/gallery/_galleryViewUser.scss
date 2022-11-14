@@ -8,18 +8,25 @@
     grid-auto-flow: dense;
 }
 
-.container div {
+.container a {
     text-align: center;
     background-color: burlywood;
 }
 
 
 @for $i from 1 through 22 {
-    .container div:nth-child(#{$i}){
+    .container a:nth-child(#{$i}){
         grid-column: span (random(3));
         border: 1px solid red;
         grid-row: span (random(3));
     }
+}
+
+.container a img {
+    height: 100%;
+    width: 100%;
+    $object-fit: cover;
+    position: relative;
 }
 
 .info{
@@ -47,7 +54,7 @@
         grid-auto-rows: 150px;
     }
 
-    .container div{
+    .container a{
         grid-column: span 1 !important;
         border: 1px solid red;
     }
