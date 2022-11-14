@@ -1,0 +1,48 @@
+#newComment{
+    width: 100%;
+    max-width: 1500px;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    gap: 25px 0px;
+    background-color: $color-input;
+    color: $color-contrastBlack;
+    padding: 25px;
+    border-radius: 4px;
+
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px 0px;
+
+        div{
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px 0px;
+
+            textarea{
+                background-color: $color-contrastWhite;
+                height: 125px;
+                resize: vertical;
+                border: 2px solid $color-contrastBlack;
+                border-radius: 4px;
+
+                &:focus{
+                    outline: 0;
+                }
+            }
+        }
+
+        button{
+            @include buttonPrimary(125px);
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@ let navbarEl = document.querySelector('nav')
 let openNavEl = document.querySelector('i[class="bi bi-list"]')
 let closeNavEl = document.querySelector('i[class="bi bi-plus-lg"]')
 
-function init(){
+function initNav(){
     openNavEl.addEventListener('click', () => {
         openNav()
     })
@@ -19,5 +19,5 @@ function closeNav(){
 }
 
 export default {
-    init
+    initNav
 }
