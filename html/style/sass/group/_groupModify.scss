@@ -5,8 +5,165 @@
         @include buttonPrimary(219px);
         margin-top: 12px;
     }
+//     .CancelButton{
+//         @include buttonInput(219px);
+//         display: flex;
+//         margin-top: 8px;
+//     }
+    
+    
+//     #nameGroup{
+//         height: 30px;
+//         display: flex;
+//         margin-top: 10px;
+//     }
+    
+//     .form-nameGroup{
+//         margin-top: 18px;
+        
+//     }
+    
+//     #memberName{
+//         height: 30px;
+//         display: flex;
+//         margin-top: 10px;
+        
+//     }
+    
+//     .form-nameMember{
+//         margin-top: 30px;
+        
+//     }
+    
+    
+//     .form-Group{
+//         display: flex;
+//         flex-direction: column;
+    
+//     }
+    
+    
+//     .form-Group input {
+//         width: 100%;
+//     }
+    
+//     .buttons{
+//         margin-top: 10px;
+//     }
+    
+    .DeleteButton{
+        @include buttonDanger(219px);
+        margin: auto;
+    }
+
+//     h2{
+//         margin-bottom: 15px;
+//     }
+
+//     h3{
+        
+//         margin-top: 15px;
+//     }
+
+//     #info{
+//         margin-bottom: 20px;
+//     }
+
+//     .formul, .buttons, .DeleteButton{
+//         margin: auto;
+//     }
+//     .formul{
+//         width: 219px;
+//     }
+    
+//     h2, h3{
+//         text-align: center;
+//    }
+    
+    
+    
+//     @media (min-width:1000px){
+//         .formul{
+//             display: flex;
+//             flex-direction: row;
+//             margin-bottom: 25px;
+//             width: 60%;
+//             margin: auto;          
+//         }
+
+//         .form-nameGroup, .form-memberName {
+//             width: 219px;
+//             // margin: auto;
+//         }
+    
+//         .buttons{
+//             display: flex;
+//             flex-direction: row;
+//         }
+        
+//         .CancelButton{
+//             margin-top: 12px;
+//             margin-left: 30px;
+//         }
+    
+//         .form-nameGroup{
+//             width: 50%;
+//             margin-right: 30px;
+//         }
+    
+//         .form-nameMember{
+//             width: 50%;
+//             margin-top: 18px;
+//         }
+    
+//         h3{
+//             font-weight: bold;        
+//             // margin-left: 100px;
+//         }
+    
+//         h2{
+//             text-align: center;
+//         }
+    
+//         .form-Group{
+//             display: flex;
+//             align-items: center;
+//             // height: 1000px;
+//         }
+    
+//         .header{
+//             // margin-left: 100px;
+//             display: flex;
+//             flex-direction: row;
+//             margin: auto;
+//         }
+    
+//         .SaveButton{
+//             width: 150px;
+//         }
+    
+//         .DeleteButton{
+//             @include buttonDanger(219px);
+//             // margin-left: 30px;
+//             margin-top: 0;
+//         }
+    
+//         .CancelButton{
+    //             width: 150px;
+    //         }
+    
+    //     } 
+    
+    
+    
+    
+    
+    .CreateButton{
+        @include buttonPrimary(220px);
+        margin-top: 22px;
+    }
     .CancelButton{
-        @include buttonInput(219px);
+        @include buttonInput(220px);
         display: flex;
         margin-top: 8px;
     }
@@ -39,47 +196,72 @@
     .form-Group{
         display: flex;
         flex-direction: column;
+        margin: auto;
     
+    }
+    
+    .formul{
+        margin: auto;
     }
     
     
     .form-Group input {
-        width: 100%;
+        width: 219px;
     }
     
     .buttons{
         margin-top: 10px;
+        margin: auto;
     }
     
-    .DeleteButton{
-        @include buttonDanger(219px);
-        margin-top: 15px;
-        margin-bottom: 35px;
-    }
-
+    
     #info{
         margin-bottom: 20px;
     }
     
+    h2, h3{
+        text-align: center;
+    } 
     
+    h2{
+        margin-bottom: 25px;
+        margin-top: 25px;
+    }
+    h3{
+        font-weight: bold;
+        margin-top: 25px;
+    }
     
+    .form-role label{
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    
+    .form-role{
+    display: flex;
+    flex-direction: column;
+    
+    }
     
     @media (min-width:1000px){
         .formul{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             margin-bottom: 25px;
             width: 100%;
+    
         }
     
         .buttons{
             display: flex;
             flex-direction: row;
+            margin-top: 30px;
         }
         
         .CancelButton{
-            margin-top: 12px;
+            // margin-top: 12px;
             margin-left: 30px;
+            margin-top: 0;
         }
     
         .form-nameGroup{
@@ -89,43 +271,46 @@
     
         .form-nameMember{
             width: 50%;
-            margin-top: 18px;
+            margin-left: 15px;
         }
     
-        h3{
-            font-weight: bold;        
-            // margin-left: 100px;
-        }
+       
     
-        h2{
-            margin-bottom: 50px;
-        }
     
         .form-Group{
-            display: flex;
+            // display: flex;
             align-items: center;
-            // height: 1000px;
+            width: 500px;
         }
     
         .header{
             // margin-left: 100px;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
         }
     
         .SaveButton{
             width: 150px;
-        }
-    
-        .DeleteButton{
-            @include buttonDanger(219px);
-            margin-left: 30px;
             margin-top: 0;
         }
+    
     
         .CancelButton{
             width: 150px;
         }
     
+        .memberRole{
+            display: flex;
+            flex-direction: row;
+        }
+    
+        #role{
+            width: 220px;
+        }
+        .form-role{
+            width: 50%;
+        }
     } 
 }
+
+

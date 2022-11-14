@@ -28,8 +28,8 @@ $router->addRoute('about', 'about', 'atelier\control\AboutController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
 $router->addRoute('logout', 'logout', 'atelier\control\LogoutController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
-$router->addRoute('createGroup', 'createGroup', 'atelier\control\CreateGroupController');
-$router->addRoute('modifyGroup', 'modifyGroup', 'atelier\control\modifyGroupController');
+$router->addRoute('create-group', 'create-group', 'atelier\control\CreateGroupController');
+$router->addRoute('modify-group', 'modify-group', 'atelier\control\modifyGroupController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);

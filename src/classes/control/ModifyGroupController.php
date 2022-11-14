@@ -6,7 +6,7 @@ use atelier\view as View;
 
 class ModifyGroupController extends AbstractController{
     public function execute() : void {
-        View\AppView::setAppTitle("Groupe - PhotoMedia");
+        View\AppView::setAppTitle("Modification d'un groupe - PhotoMedia");
         
         $vue = new View\ModifyGroupView();
         $vue->makePage();
