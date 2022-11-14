@@ -41,7 +41,7 @@ $router->addRoute('picture', 'picture', 'atelier\control\PictureController');
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('edit-galery', 'edit-galery', 'atelier\control\EditGaleryController', Authentification::ACCESS_LEVEL_USER);
-
+$router->addRoute('view-gallery', 'view-gallery', 'atelier\control\GalleryController');
 
 /* Route par défaut */
 $router->setDefaultRoute('home');
