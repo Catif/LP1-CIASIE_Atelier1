@@ -149,6 +149,7 @@ nav {
         }
     }
     
+    
     &.active{
         position: fixed;
         width: 100vw;
@@ -157,6 +158,8 @@ nav {
 
         display: flex;
         flex-direction: column;
+
+        z-index: 9999;
 
         &>i[class="bi bi-list"]{
             display: none;
