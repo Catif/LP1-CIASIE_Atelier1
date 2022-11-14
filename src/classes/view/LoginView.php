@@ -11,7 +11,7 @@ class LoginView extends AppView {
         $html = <<<EOF
         <div class="connexion">
             <form class="login" action="" method="post">
-                <h2 id="cou">Connexion</h2>
+                <h1>Connexion</h2>
 
                 <label>Email</label>
                 <input type="email" name="email" required>
