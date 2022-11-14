@@ -7,11 +7,11 @@ class RegisterView extends AppView {
     public function render():string{
         $r = new Router();
         $login = $r->urlFor('login');
-        $html = <<<EOF
+        $html = <<<BLADE
         <div class="inscription">
             <form class="regist" action="" method="post">
                 <div>
-                    <h2>Inscription</h2>
+                    <h1>Inscription</h1>
                     <div>
                         <div>
                             <label>Pseudonyme</label>
@@ -39,7 +39,7 @@ class RegisterView extends AppView {
                 </div>
             </form>
         </div>
-    EOF;
+    BLADE;
 
     return $html;
 }
