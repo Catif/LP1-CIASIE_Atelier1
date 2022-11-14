@@ -3,12 +3,16 @@
 namespace atelier\control;
 
 use atelier\view as View;
+use atelier\modele\Galery;
 
 class HomeController extends AbstractController{
     public function execute() : void {
         View\AppView::setAppTitle("Accueil - PhotoMedia");
         
-        $vue = new View\HomeView();
+        $requete = Galery::where('private', '0')->get();
+
+
+        $vue = new View\HomeView($requete);
         $vue->makePage();
     }
       

@@ -4,9 +4,9 @@ let newComment = document.createElement('div').classList.add('#newComment')
 
 
 function initAddComment(){
-    addCommentBtn.addEventListener('click', () => {
-        addComment()
-    })
+    // addCommentBtn.addEventListener('click', () => {
+    //     addComment()
+    // })
 }
 
 

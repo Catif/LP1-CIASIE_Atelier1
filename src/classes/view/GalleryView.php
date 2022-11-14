@@ -14,7 +14,7 @@ class GalleryView extends AppView {
             $page = $_GET['page'];
         }
         
-        $pics = $gallery->pictures()->skip(($page-1)*$numberPicturePerPage)->take(22)->get();
+        $pics = $gallery->pictures()->skip(($page-1)*$numberPicturePerPage)->take($numberPicturePerPage)->get();
 
         foreach($pics as $p){
             $urlPic = $this->router->urlFor('picture', [['id',$p->id]]);

@@ -2,8 +2,9 @@ body.no-scroll{
     overflow: hidden;
 }
 
-article {
-    width: 100%;
+#edit-galery{
+    padding: 45px;
+
     #CreateGalery{
         display:flex;
         flex-direction: column;
@@ -261,7 +262,7 @@ article {
                                 display: flex;
                                 flex-direction: column;
                                 gap: 5px;
-    
+
                                 label{
                                     font-size: 14px;
                                 }
