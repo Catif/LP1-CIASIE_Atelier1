@@ -38,32 +38,37 @@ abstract class AppView extends AbstractView implements Renderer{
 
     protected function makeNavbar(): string {
         $navItems = "";
+
+        $urlAbout = $this->router->urlFor('about');
+
         if (Authentification::connectedUser()) {
             $urlProfile = $this->router->urlFor('profile');
+            $urlLogout = $this->router->urlFor('logout');
             
             $navItems = <<<BLADE
-            <a href="${urlProfile}"><h2>Profil</h2></a>
-            <a href=""><h2>A propos</h2></a>
-            <a href=""><h2>Déconnexion</h2></a>
-            <a href="" class="mediaquery"><h2>Profil</h2></a>
+            <a href="${urlProfile}" class="mediaquery"><h2>Profil</h2></a>
+            <a href="${urlAbout}"><h2>A propos</h2></a>
+            <a href="${urlLogout}" class="mediaquery"><h2>Déconnexion</h2></a>
+            
             <div id="dropdownNav">
                 <a href=""><img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"></a>
 
                 <div class="dropdown-content">
                     <div class="items">
-                        <a href="">Profil</a>
+                        <a href="${urlProfile}">Profil</a>
                         <a href="">Paramètres</a>
-                        <a href="">Déconnexion</a>
+                        <a href="${urlLogout}">Déconnexion</a>
                     </div>
                 </div>
             </div>
             BLADE;
+            
         } else {
             $urlConnexion = $this->router->urlFor('login');
             $urlInscription = $this->router->urlFor('register');
 
             $navItems = <<<BLADE
-            <a href=""><h2>A propos</h2></a>
+            <a href="${urlAbout}"><h2>A propos</h2></a>
             <a href="${urlConnexion}"><h2 id="login">Connexion</h2></a>
             <a href="${urlInscription}"><h2 id="register">Inscription</h2></a>
             BLADE;
