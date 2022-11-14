@@ -1,0 +1,96 @@
+#home{
+    display: flex;
+    flex-direction: column;
+    gap: 25px 0px;
+    padding: 25px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-auto-rows:100px 300px;
+    grid-gap:10px;
+    grid-auto-flow: dense;
+    text-align: center;
+    .gallery-item{
+        @for $i from 1 through 22{
+            &:nth-child(#{$i}){
+                grid-column: span (random(2) + 1);
+            }
+        }
+    
+        @for $i from 1 through 22{
+            &:nth-child(#{$i}){
+                grid-row: span random(3);
+            }
+        }
+
+        .gallery-content{
+            width:100%;
+            height:100%;
+            position:relative;
+
+            .image{
+                width:100%;
+                height:100%;
+                overflow:hidden;
+
+                img{
+                    width:100%;
+                    height:100%;
+                    object-fit: cover;
+                    object-position:50% 50%;
+                    cursor:pointer;
+                    transition:.5s ease-in-out;
+
+                    &:hover{
+                        transform:scale(1.5);
+                    }
+                }
+            }
+
+            .text{
+                width: 100%;
+                height: 100%;
+                opacity:0;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+                color: $color-contrastWhite;
+                font-size:24px;
+                pointer-events:none;
+                z-index:4;
+
+                &:hover{
+                    opacity:1;
+                    width:100%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+@media screen and (max-width:1000px){
+    .gallery{
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .gallery-item{
+        @for $i from 1 through 22{
+            &:nth-child(#{$i}){
+                grid-column: span 1;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1180px){
+    #home{
+        padding: 45px;
+    }
+}
