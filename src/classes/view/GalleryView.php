@@ -11,7 +11,6 @@ class GalleryView extends AppView {
         
         
         $html = <<<EOF
-
             <div class="info">
                 <p>Titre :{$gallery->title}</p>
                 <p>Auteur :{$user->username}</p>
