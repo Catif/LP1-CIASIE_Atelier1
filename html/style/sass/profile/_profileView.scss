@@ -1,19 +1,26 @@
 #profile{
+    padding: 45px 20px; 
     display: flex;
     flex-direction: column;
     gap: 25px 0px;
-}
 
-#galery-list{
-    overflow-x: scroll;
-    padding: 10px;
-    
-    display: flex;
-    gap: 20px;
-    
-    div{
-        min-width: 150px;
-        height: 150px;
-        background-color: blue;
+    .list-galery{
+        overflow-x: scroll;
+        padding: 10px;
+        
+        display: flex;
+        gap: 20px;
+        
+        .galery{
+            min-width: 300px;
+            height: 200px;
+            background-color: blue;
+
+            img{
+                width: 300px;
+                height: 200px;    
+                object-fit: cover;
+            }
+        }
     }
 }
