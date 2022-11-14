@@ -48,7 +48,7 @@ class GalleryView extends AppView {
 
         $htmlPagination = "";
         for ($i = 1; $i <= ceil($number/$numberPicturePerPage); $i++) {
-            if (isset($_GET['page'])){
+            if (isset($_GET['page']) && $_GET['page'] == $i){
                 $htmlPagination .= <<<BLADE
                 <option value="${i}" selected>${i}</option>
                 BLADE;
@@ -62,8 +62,7 @@ class GalleryView extends AppView {
         $urlEditGallery= $this->router->urlFor('edit-galery', [['id', $idGallery]]);
         $htmlEditGallery = '';
         if (isset($_SESSION['user_profile'])){
-            
-            $user = $gallery->users()->withPivot('role')->where('role', 'owner')->orWhere('role', 'colaborator')->first();
+            $user = $gallery->users()->withPivot('role')->where('role', 'owner')->orWhere('role', 'contributor')->first();
             if ($user){
                 $htmlEditGallery = <<<BLADE
                 <a href="${urlEditGallery}">Editer la galerie</a>
