@@ -16,8 +16,6 @@ class EditGaleryController extends AbstractController
 
             if ($galery->users()->withPivot('role')->where('id_user', $_SESSION['user_profile']['id'])->where('role', 'owner')->orWhere('role', 'contributor')->exists()) {
 
-                $this->view = new View\EditGaleryView();
-
                 if ($galery) {
                     if (!empty($_FILES['images']['name'])) {
                         $tabImages = $_FILES['images'];
