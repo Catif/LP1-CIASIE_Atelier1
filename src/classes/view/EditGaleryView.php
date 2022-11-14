@@ -138,8 +138,6 @@ class EditGaleryView extends AppView {
                                         <button type="button" dataModal="annuler">Annuler</button>
                                     </div>
                                 </div>
-                                
-                                
                             </div>
                         </div>
                     </div>
@@ -152,7 +150,7 @@ class EditGaleryView extends AppView {
             </div>
 
             <div class="list-button">
-                <button type="submit" name="action" name="editGalery">Modifier la galerie</button>
+                <button type="submit" name="actionForm" name="editGalery">Modifier la galerie</button>
                 <a href="${urlRetour}">Annuler</a>
             </div>
         </form>
@@ -190,11 +188,10 @@ class EditGaleryView extends AppView {
             $stringTagPicture = substr($stringTagPicture, 0, -2);
 
             $htmlPictures .= <<<BLADE
-            <div class="image-file">
+            <div class="image-file" id="image-${idPicture}">
                 <img src="${urlPicture}" alt="Image ${idPicture}">
                 <p title="${namePicture}">${namePicture}</p>
-                <input type="hidden" name="old-title-image-${idPicture}" value="${namePicture}">
-                <input type="hidden" name="old-tag-image-${idPicture}" value="${stringTagPicture}">
+                <input type="hidden" name="tagPicture" value="${stringTagPicture}">
 
                 <div class="image-actions">
                     <i class="bi bi-pencil-square"></i>
@@ -218,7 +215,7 @@ class EditGaleryView extends AppView {
                 <div class="modal">
                     <div class="card">
                         <div class="header">
-                            <h3>Edition de l'image n°<span id="numberImage"></span></h3>
+                            <h3>Edition de l'image</h3>
                             <hr>
                         </div>
 
@@ -237,6 +234,7 @@ class EditGaleryView extends AppView {
                             </div>
 
                             <div class="footer">
+                                <input type="hidden" name="MODAL-id-image" value="">
                                 <button type="submit" dataModal="valider" name="editOldPicture" value="1">Valider</button>
                                 <button type="button" dataModal="annuler">Annuler</button>
                             </div>
@@ -271,7 +269,7 @@ class EditGaleryView extends AppView {
                     <input type="text" id="addMember" name="email" placeholder="Email">
                 </div>
                 <div class="list-button">
-                    <button type="submit" name="addMember" value="true">Ajouter</button>
+                    <button type="submit" name="actionForm" value="addMember">Ajouter</button>
                 </div>
             </form>
         BLADE;
@@ -290,19 +288,18 @@ class EditGaleryView extends AppView {
         $guestHTML = '';
         $contributorHTML = '';
         foreach($galery->users()->withPivot('role')->get() as $member){
-            echo($member->pivot->role);
             if($member->id != $_SESSION['user_profile']['id'] && $member->pivot->role != 'owner'){
                 $idMember = $member->id;
                 $usernameMember = $member->username;
                 if ($member->pivot->role == 'guest'){
                     $guestHTML .= <<<BLADE
-                    <form class="user">
+                    <form class="user"  action="${urlActionForm}" method="POST">
                         <p>${usernameMember}</p>
                         <div class="image-actions">
-                            <button type="submit" name="changeRole" value="contributor">
+                            <button type="submit" name="actionForm" value="changeRoleMember">
                                 <i class="bi bi-arrow-left-right"></i>
                             </button>
-                            <button type="submit" name="deleteMember" value="1">
+                            <button type="submit" name="actionForm" value="deleteMember">
                                 <i class="bi bi-x-lg"></i>
                             </button>
                             <input type="hidden" name="idMember" value="${idMember}">
@@ -314,10 +311,10 @@ class EditGaleryView extends AppView {
                     <form class="user" action="${urlActionForm}" method="POST">
                         <p>${usernameMember}</p>
                         <div class="image-actions">
-                            <button type="submit" name="action" value="changeRoleMember">
+                            <button type="submit" name="actionForm" value="changeRoleMember">
                                 <i class="bi bi-arrow-left-right"></i>
                             </button>
-                            <button type="submit" name="action" value="deleteMember">
+                            <button type="submit" name="actionForm" value="deleteMember">
                                 <i class="bi bi-x-lg"></i>
                             </button>
                             <input type="hidden" name="idMember" value="${idMember}">

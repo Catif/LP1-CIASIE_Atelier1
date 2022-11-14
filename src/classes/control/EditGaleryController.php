@@ -116,7 +116,7 @@ class EditGaleryController extends AbstractController{
                             $user->galeries()->save($galerie, ['role' => 'owner']);
                         }
                     } else if (!empty($_POST)){
-                        if (isset($_POST['addMember'])){
+                        if ($_POST['actionForm'] == 'addMember'){
                             if(isset($_POST['email'], $_POST['typeMember'])){
                                 if ($_POST['typeMember'] == 'guest' || $_POST['typeMember'] == 'contributor'){
                                     $user = Modele\User::where('email', $_POST['email'])->first();
@@ -131,23 +131,37 @@ class EditGaleryController extends AbstractController{
                                 }
 
                             } 
-                        } else if ($_POST['action'] == 'deleteMember'){
-                            $user = Modele\User::where('email', $_POST['email'])->first();
+                        } else if ($_POST['actionForm'] == 'deleteMember'){
+                            $user = $galery->users()->where('id_user', $_POST['idMember'])->withPivot('role')->first();
                             if ($user){
-                                $galery->users()->detach($user);
+                                if($user->pivot->role != 'owner' && $user->id != $_SESSION['user_profile']['id']){
+                                    $galery->users()->detach($user);
+                                }
                             }
-                        } else if ($_POST['action'] == 'deletePicture'){
-                            $picture = Modele\Picture::find($_POST['id']);
+                        } else if ($_POST['actionForm'] == 'changeRoleMember'){
+                            $user = $galery->users()->where('id', $_POST['idMember'])->withPivot('role')->first();
+                            if ($user){
+                                if($user->pivot->role != 'owner' && $user->id != $_SESSION['user_profile']['id']){
+                                    echo('Changement de rôle');
+                                    $role = '';
+                                    if ($user->pivot->role == 'guest'){
+                                        $role = 'contributor';
+                                    } else {
+                                        $role = 'guest';
+                                    }
+                                    $galery->users()->updateExistingPivot($user, ['role' => $role]);
+                                }
+                            }
+
+                        } else if (isset($_POST['deleteOldPicture'])){
+                            $picture = Modele\Picture::find($_POST['deleteOldPicture']);
                             if ($picture){
                                 $picture->delete();
                             }
-                        } else if ($_POST['action'] == 'deleteGalery'){
+                        } else if ($_POST['actionForm'] == 'deleteGalery'){
                             $galery->delete();
                         }
                     }
-
-
-
 
                         
                     View\AppView::setAppTitle("Edition d'une galerie - PhotoMedia");
@@ -155,24 +169,23 @@ class EditGaleryController extends AbstractController{
                     $vue = new View\EditGaleryView(['galery' => $galery]);
                     $vue->makePage();
                 } else {
-                    echo("Galerie non trouvée");
+                    // Galerie non trouvée
 
-                    $urlProfile = $router->urlFor('profile');
-                    header('Location: ' . $urlProfile);
+                    $urlHome = $router->urlFor('home');
+                    header('Location: ' . $urlHome);
                     die();
                 }
             } else {
-                echo("Vous n'avez pas les droits pour accéder à cette page");
-
-                $urlProfile = $router->urlFor('profile');
-                header('Location: ' . $urlProfile);
+                // Vous n'avez pas les droits pour accéder à cette page
+                $urlHome = $router->urlFor('home');
+                header('Location: ' . $urlHome);
                 die();
             }
         } else {
-            echo("Aucune galerie sélectionnée");
+            // Aucune galerie sélectionnée
 
-            $urlProfile = $router->urlFor('profile');
-            header('Location: ' . $urlProfile);
+            $urlHome = $router->urlFor('home');
+            header('Location: ' . $urlHome);
             die();
         }
     }
