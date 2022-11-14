@@ -1,0 +1,74 @@
+#CreateGalery.formatEdit{
+    h2{
+        margin-top: 60px; 
+
+        &:first-child{
+            margin-top: 0;
+        }
+    }
+    
+    form.oldPicture{
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            
+            button[type="submit"]{
+                height: auto;
+                background-color: transparent;
+                padding: 0 4px;
+                i[class="bi bi-x-lg"]{
+                    color: $color-red;
+                }
+            }
+        }
+    }
+
+    div.ManageMember{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        &>div{
+            margin-top: 20px;
+            flex-grow: 1;
+
+            h3{
+                text-align: center;
+            }
+            
+            .box{
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                form{
+                    display: flex;
+                    flex-direction: row;
+                    background-color: $color-input;
+                    justify-content: space-between;
+                    height: 30px;
+                    align-items: center;
+                    padding: 5px 15px;
+                    border-radius: 4px;
+                    margin-top: 0;
+    
+                    button[type="submit"]{
+                        height: auto;
+                        background-color: transparent;
+                        padding: 0 4px;
+                        i{
+                            font-size: 18px;
+                            color:  $color-contrastBlack;
+                            cursor: pointer;
+                        }
+                        i[class="bi bi-x-lg"]{
+                            color: $color-red;
+                        }
+                    }
+                }
+            }
+        }
+    }        
+}

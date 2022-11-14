@@ -3,7 +3,7 @@
 namespace atelier\control;
 
 use atelier\view as View;
-
+use atelier\router\Router;
 use atelier\modele as Modele;
 
 class CreateGaleryController extends AbstractController{
@@ -105,14 +105,19 @@ class CreateGaleryController extends AbstractController{
 
                 $user = Modele\User::find($userId);
                 $user->galeries()->save($galerie, ['role' => 'owner']);
+
+                $router = new Router();
+                $urlProfile = $router->urlFor('profile');
+                header('Location: ' . $urlProfile);
             }
+        } else {
+            View\AppView::setAppTitle("Création d'une galerie - PhotoMedia");
+            
+            $vue = new View\CreateGaleryView();
+            $vue->makePage();
         }
 
 
-        View\AppView::setAppTitle("Création d'une galerie - PhotoMedia");
-        
-        $vue = new View\CreateGaleryView();
-        $vue->makePage();
     }
       
 }

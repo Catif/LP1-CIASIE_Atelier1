@@ -1,0 +1,70 @@
+#profile{
+    padding: 45px 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .list{
+        overflow-x: scroll;
+        padding: 10px;
+        
+        display: flex;
+        gap: 20px;
+        
+        .gallery{
+            position: relative;
+            min-width: 300px;
+            height: 200px;
+            background-color: $color-input;
+            border-radius: 4px;
+            overflow: hidden;
+
+            &.create{
+                span{
+                    display: flex;
+                    color: $color-contrastBlack;
+                    font-size: 50px;
+                }
+            }
+
+            img{
+                width: 300px;
+                height: 200px;    
+                object-fit: cover;
+            }
+
+            span{
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                width: 300px;
+                height: 200px;
+                backdrop-filter: blur(5px);
+                color: $color-contrastWhite;
+            }
+
+            &:hover span{
+                display: flex;
+                background-color: rgba(0,0,0,0.5);
+            }
+
+        }
+
+        .group{
+            position: relative;
+            background-color: $color-input;
+            border-radius: 4px;
+            overflow: hidden;
+
+            span{
+                display: flex;
+                color: $color-contrastBlack;
+                font-size: 20px;
+                padding: 10px 15px;
+            }
+        }
+    }
+}

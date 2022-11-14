@@ -23,17 +23,15 @@ abstract class AppView extends AbstractView implements Renderer{
     protected function makeBody(): string {
         $article = $this->render();
         $navbar = $this->makeNavbar();
+        $idSection = $this->router->getAction();
 
         return <<<BLADE
             <header>
                 ${navbar}
             </header>
 
-            <section>
-                <article>
-                    ${article}
-                </article>
-
+            <section id="${idSection}">
+                ${article}
             </section>
         BLADE;
     }
