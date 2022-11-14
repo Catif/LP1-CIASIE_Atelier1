@@ -281,7 +281,6 @@ nav {
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
-  justify-content: center;
   gap: 1em; }
 
 .about div div a {
@@ -306,7 +305,7 @@ nav {
   text-align: center;
   margin-top: 1em; }
 
-.about div > *:not(a) {
+.about div > * {
   width: 100%; }
 
 @media screen and (min-width: 500px) {
