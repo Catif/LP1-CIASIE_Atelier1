@@ -38,14 +38,14 @@ $router->addRoute('about', 'about', 'atelier\control\AboutController');
 $router->addRoute('login', 'login', 'atelier\control\LoginController');
 $router->addRoute('logout', 'logout', 'atelier\control\LogoutController');
 $router->addRoute('register', 'register', 'atelier\control\RegisterController');
-$router->addRoute('create-group', 'create-group', 'atelier\control\CreateGroupController');
-$router->addRoute('modify-group', 'modify-group', 'atelier\control\modifyGroupController');
 $router->addRoute('picture', 'picture', 'atelier\control\PictureController');
 
 $router->addRoute('profile', 'profile', 'atelier\control\ProfileController', Authentification::ACCESS_LEVEL_USER);
 $router->addRoute('create-galery', 'create-galery', 'atelier\control\CreateGaleryController', Authentification::ACCESS_LEVEL_USER);
+$router->addRoute('view-gallery', 'view-gallery', 'atelier\control\GalleryController');
 $router->addRoute('edit-galery', 'edit-galery', 'atelier\control\EditGaleryController', Authentification::ACCESS_LEVEL_USER);
-
+$router->addRoute('create-group', 'create-group', 'atelier\control\CreateGroupController', Authentification::ACCESS_LEVEL_USER);
+$router->addRoute('modify-group', 'modify-group', 'atelier\control\modifyGroupController', Authentification::ACCESS_LEVEL_USER);
 
 /* Route par défaut */
 $router->setDefaultRoute('home');
