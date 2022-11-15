@@ -93,75 +93,79 @@ class EditGaleryController extends AbstractController
                         }
                     }
                     if (!empty($_POST)) {
-                        if ($_POST['actionForm'] == 'editGalery'){
-                            $galery->title = $_POST['title'];
-                            $galery->description = $_POST['description'];
-                            $galery->private = $_POST['visibilite'];
-                            $galery->save();
+                        if (isset($_POST['actionForm'])) {
 
-                            $galery->tags()->detach();
-                            $tabTagsGalerie = explode(',', $_POST['tags']);
-                            foreach ($tabTagsGalerie as $tag) {
-                                $tag = trim($tag);
-                                $tag = strtolower($tag);
-                                $tag = ucfirst($tag);
-                                $tag = Modele\Tag::firstOrCreate(['name' => $tag]);
-                                $galery->tags()->attach($tag);
-                            }
-
-
-                        } else if ($_POST['actionForm'] == 'addMember') {
-                            if (isset($_POST['email'], $_POST['typeMember'])) {
-                                if ($_POST['typeMember'] == 'guest' || $_POST['typeMember'] == 'contributor') {
-                                    $user = Modele\User::where('email', $_POST['email'])->first();
-                                    if ($user) {
-                                        if ($user->galeries()->withPivot('role')->where('id_galery', $galery->id)->exists()) {
-                                            echo ("L'utilisateur est déjà membre de la galerie");
-                                        } else {
-                                            $user->galeries()->save($galery, ['role' => $_POST['typeMember']]);
-                                            echo ("L'utilisateur a été ajouté à la galerie");
+                            if ($_POST['actionForm'] == 'editGalery'){
+                                $galery->title = $_POST['title'];
+                                $galery->description = $_POST['description'];
+                                $galery->private = $_POST['visibilite'];
+                                $galery->save();
+    
+                                $galery->tags()->detach();
+                                $tabTagsGalerie = explode(',', $_POST['tags']);
+                                foreach ($tabTagsGalerie as $tag) {
+                                    $tag = trim($tag);
+                                    $tag = strtolower($tag);
+                                    $tag = ucfirst($tag);
+                                    $tag = Modele\Tag::firstOrCreate(['name' => $tag]);
+                                    $galery->tags()->attach($tag);
+                                }
+    
+    
+                            } else if ($_POST['actionForm'] == 'addMember') {
+                                if (isset($_POST['email'], $_POST['typeMember'])) {
+                                    if ($_POST['typeMember'] == 'guest' || $_POST['typeMember'] == 'contributor') {
+                                        $user = Modele\User::where('email', $_POST['email'])->first();
+                                        if ($user) {
+                                            if ($user->galeries()->withPivot('role')->where('id_galery', $galery->id)->exists()) {
+                                                echo ("L'utilisateur est déjà membre de la galerie");
+                                            } else {
+                                                $user->galeries()->save($galery, ['role' => $_POST['typeMember']]);
+                                                echo ("L'utilisateur a été ajouté à la galerie");
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        } else if ($_POST['actionForm'] == 'deleteMember') {
-                            $user = $galery->users()->where('id_user', $_POST['idMember'])->withPivot('role')->first();
-                            if ($user) {
-                                if ($user->pivot->role != 'owner' && $user->id != $_SESSION['user_profile']['id']) {
-                                    $galery->users()->detach($user);
-                                }
-                            }
-                        } else if ($_POST['actionForm'] == 'changeRoleMember') {
-                            $user = $galery->users()->where('id', $_POST['idMember'])->withPivot('role')->first();
-                            if ($user) {
-                                if ($user->pivot->role != 'owner' && $user->id != $_SESSION['user_profile']['id']) {
-                                    echo ('Changement de rôle');
-                                    $role = '';
-                                    if ($user->pivot->role == 'guest') {
-                                        $role = 'contributor';
-                                    } else {
-                                        $role = 'guest';
-                                    }
-                                    $galery->users()->updateExistingPivot($user, ['role' => $role]);
-                                }
-                            }
-                        } else if ($_POST['actionForm'] == 'editOldPicture') {
-                            $picture = $galery->pictures()->where('id', $_POST['MODAL-id-image'])->first();
-                            if ($picture) {
-                                echo('test');
-                                $picture->title = $_POST['MODAL-title-image'];
-                                $picture->save();
-                                $picture->tags()->detach();
-                                if (!empty($_POST['MODAL-tag-image'])) {
-                                    $listTags = explode(',', $_POST['MODAL-tag-image']);
-                                    foreach ($listTags as $tag) {
-                                        $tag = trim($tag);
-                                        $tag = strtolower($tag);
-                                        $tag = ucfirst($tag);
-                                        $tag = Modele\Tag::firstOrCreate(['name' => $tag]);
-                                        $picture->tags()->attach($tag);
+                            } else if ($_POST['actionForm'] == 'deleteMember') {
+                                $user = $galery->users()->where('id_user', $_POST['idMember'])->withPivot('role')->first();
+                                if ($user) {
+                                    if ($user->pivot->role != 'owner' && $user->id != $_SESSION['user_profile']['id']) {
+                                        $galery->users()->detach($user);
                                     }
                                 }
+                            } else if ($_POST['actionForm'] == 'changeRoleMember') {
+                                $user = $galery->users()->where('id', $_POST['idMember'])->withPivot('role')->first();
+                                if ($user) {
+                                    if ($user->pivot->role != 'owner' && $user->id != $_SESSION['user_profile']['id']) {
+                                        echo ('Changement de rôle');
+                                        $role = '';
+                                        if ($user->pivot->role == 'guest') {
+                                            $role = 'contributor';
+                                        } else {
+                                            $role = 'guest';
+                                        }
+                                        $galery->users()->updateExistingPivot($user, ['role' => $role]);
+                                    }
+                                }
+                            } else if ($_POST['actionForm'] == 'editOldPicture') {
+                                $picture = $galery->pictures()->where('id', $_POST['MODAL-id-image'])->first();
+                                if ($picture) {
+                                    $picture->title = $_POST['MODAL-title-image'];
+                                    $picture->save();
+                                    $picture->tags()->detach();
+                                    if (!empty($_POST['MODAL-tag-image'])) {
+                                        $listTags = explode(',', $_POST['MODAL-tag-image']);
+                                        foreach ($listTags as $tag) {
+                                            $tag = trim($tag);
+                                            $tag = strtolower($tag);
+                                            $tag = ucfirst($tag);
+                                            $tag = Modele\Tag::firstOrCreate(['name' => $tag]);
+                                            $picture->tags()->attach($tag);
+                                        }
+                                    }
+                                }
+                            } else if ($_POST['actionForm'] == 'deleteGalery') {
+                                $galery->delete();
                             }
                         } else if (isset($_POST['deleteOldPicture'])) {
                             $picture = Modele\Picture::find($_POST['deleteOldPicture']);
@@ -171,9 +175,7 @@ class EditGaleryController extends AbstractController
                                     $picture->delete();
                                 } 
                             }
-                        } else if ($_POST['actionForm'] == 'deleteGalery') {
-                            $galery->delete();
-                        }
+                        } 
                     }
 
 

@@ -52,7 +52,7 @@ abstract class AppView extends AbstractView implements Renderer{
             <a href="${urlLogout}" class="mediaquery"><h2>Déconnexion</h2></a>
             
             <div id="dropdownNav">
-                <a href=""><img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"></a>
+                <a href="${urlProfile}"><img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg"></a>
 
                 <div class="dropdown-content">
                     <div class="items">
