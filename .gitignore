@@ -1,0 +1,9 @@
+vendor/
+.sass-cache/
+
+*.css
+
+
+conf/db.ini
+
+*/img/users/

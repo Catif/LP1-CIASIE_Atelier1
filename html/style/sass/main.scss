@@ -1,0 +1,16 @@
+body{
+    background-color: #151515;
+    color: #f4f4f4;
+}
+
+@import 'reset';
+@import 'charteGraphique';
+@import 'components/importComponents';
+@import 'about/importAbout';
+@import 'authentication/importAuthentication';
+
+@import 'gallery/importGallery';
+@import 'group/importGroup';
+@import 'home/importHome';
+@import 'image/importImage';
+@import 'profile/importProfile';

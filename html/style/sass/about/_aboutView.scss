@@ -1,0 +1,45 @@
+.about div {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 1em;
+}
+
+.about div div a{
+    @include buttonPrimary(50%);
+}
+
+.about>p {
+    margin-bottom: 1em;
+}
+
+.about h2, .about>p, .about div div p {
+    text-align: center;  
+    margin-top: 1em;
+}
+
+.about div>*{
+    width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+
+    .about div {
+        gap: 2em;
+    }
+
+    .about div div {
+        flex-direction: row;
+        gap: 2em;
+    }
+
+    .about div div p {
+        margin-top: 0;
+        text-align: end;
+        flex-basis: 50%;
+        white-space: nowrap;
+    }
+
+}
+
