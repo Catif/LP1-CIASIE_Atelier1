@@ -67,14 +67,16 @@ class GalleryView extends AppView {
             }
         }
         
-        $urlEditGallery= $this->router->urlFor('edit-galery', [['id', $idGallery]]);
         $htmlEditGallery = '';
         if (isset($_SESSION['user_profile'])){
-            $user = $gallery->users()->withPivot('role')->where('role', 'owner')->orWhere('role', 'contributor')->first();
+            $user = $gallery->users()->withPivot('role')->where('id', $_SESSION['user_profile']['id'])->first();
             if ($user){
-                $htmlEditGallery = <<<BLADE
-                <a href="${urlEditGallery}" id="edit-galery-btn">Editer la galerie</a>
-                BLADE;
+                if ($user->pivot->role == 'owner' || $user->pivot->role == 'colaborator'){
+                    $urlEditGallery= $this->router->urlFor('edit-galery', [['id', $idGallery]]);
+                    $htmlEditGallery = <<<BLADE
+                    <a href="${urlEditGallery}" id="edit-galery-btn">Editer la galerie</a>
+                    BLADE;
+                }
             }
         }
 
