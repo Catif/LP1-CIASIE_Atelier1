@@ -9,7 +9,7 @@ class HomeController extends AbstractController{
     public function execute() : void {
         View\AppView::setAppTitle("Accueil - PhotoMedia");
         
-        $requete = Galery::where('private', '0')->get();
+        $requete = Galery::where('private', '0');
 
 
         $vue = new View\HomeView($requete);
