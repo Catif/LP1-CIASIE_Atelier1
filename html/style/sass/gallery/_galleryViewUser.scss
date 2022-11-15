@@ -12,6 +12,9 @@
         grid-auto-flow: dense;
         
         .gallery-item{
+            border-radius: 4px;
+            overflow: hidden;
+
             @for $i from 1 through 22{
                 &:nth-child(#{$i}){
                     grid-column: span random(2);
