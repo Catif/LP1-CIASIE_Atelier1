@@ -31,7 +31,7 @@ class PictureView extends AppView {
         }
 
         $html = <<<BLADE
-        <a href="${urlGalerie}" class="button">Revenir à la galerie</a>
+        <a href="${urlGalerie}">Revenir à la galerie</a>
         <div id="picture-header">
             <img id="pic" src="${srcPicture}" alt="image">
             <div id="picture-infos">

@@ -16,20 +16,27 @@ class GalleryView extends AppView {
         
         $pics = $gallery->pictures()->skip(($page-1)*$numberPicturePerPage)->take($numberPicturePerPage)->get();
 
+
         foreach($pics as $p){
             $urlPic = $this->router->urlFor('picture', [['id',$p->id]]);
             $srcImg = $p->name_file;
             $titleImg = $p->title;
 
             $htmlPicture .= <<<BLADE
-            <a href="${urlPic}">
-                <img src="${srcImg}">
-                <span>${titleImg}</span>
-            </a>
+            <div class="gallery-item">
+                <a href="${urlPic}" class="gallery-content">
+                    <div class="image">
+                        <img src="${srcImg}" alt="Image introuvable">
+                    </div>
+                    <div class="text">${titleImg}</div>
+                </a>
+            </div>
             BLADE;
         }
+
         $tags = \atelier\modele\Tag::where('id', '=', $this->request->get['id'])->get();
         $htmlTag = '';
+
 
         foreach($tags as $tag){
             $htmlTag.= $tag->name . ', ';
@@ -43,6 +50,7 @@ class GalleryView extends AppView {
         $dateGallery = date('d/m/Y', strtotime($dateGallery));
 
         $idGallery = $gallery->id;
+        $descGallery = $gallery->description;
 
         $urlHere = $this->router->urlFor('view-gallery');
 
@@ -65,13 +73,15 @@ class GalleryView extends AppView {
             $user = $gallery->users()->withPivot('role')->where('role', 'owner')->orWhere('role', 'contributor')->first();
             if ($user){
                 $htmlEditGallery = <<<BLADE
-                <a href="${urlEditGallery}">Editer la galerie</a>
+                <a href="${urlEditGallery}" id="edit-galery-btn">Editer la galerie</a>
                 BLADE;
             }
         }
 
         $html = <<<BLADE
+        
         ${htmlEditGallery}
+
         <div class="info">
             <p>Titre : ${titleGallery}</p>
             <p>Auteur : ${nameUserGallery}</p>
@@ -79,24 +89,19 @@ class GalleryView extends AppView {
             <p>Tags : ${htmlTag}</p>
             <p>Nombre d'images : ${number}</p>
         </div>
-
-        <div class="container">
+        <div class="desc">
+            <p>Description : ${descGallery}</p>
+        </div>
+        <div class="gallery">
             ${htmlPicture}
         </div>
-
-        <div class="info-comp">
-            
-            <div>
-                <form action="${urlHere}" method="get">
-                    <input type="hidden" name="action" value="view-gallery">
-                    <input type="hidden" name="id" value="${idGallery}">
-                    <select name="page" onChange="this.form.submit()">
-                        ${htmlPagination}
-                    </select>
-                </form>
-            </div>
-            
-        </div>
+        <form action="${urlHere}" method="get">
+            <input type="hidden" name="action" value="view-gallery">
+            <input type="hidden" name="id" value="${idGallery}">
+            <select name="page" onChange="this.form.submit()">
+                ${htmlPagination}
+            </select>
+        </form>
         BLADE;
 
         return $html;
